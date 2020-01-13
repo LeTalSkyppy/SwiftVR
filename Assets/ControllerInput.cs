@@ -57,7 +57,7 @@ public class ControllerInput : MonoBehaviour
             }
         }
 
-        if(SteamVR_Actions._default.Teleport.GetStateDown(inputSource))
+        /*if(SteamVR_Actions._default.Teleport.GetStateDown(inputSource))
         {
             TeleportPressed();
         }
@@ -68,7 +68,7 @@ public class ControllerInput : MonoBehaviour
             {
                 TeleportReleased();
             }
-        }
+        }*/
     }
 
     void Awake()

@@ -105,6 +105,46 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean GrabMachine
+        {
+            get
+            {
+                return SteamVR_Actions.default_GrabMachine;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean RotateHoraire
+        {
+            get
+            {
+                return SteamVR_Actions.default_RotateHoraire;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean RotateAntiHoraire
+        {
+            get
+            {
+                return SteamVR_Actions.default_RotateAntiHoraire;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PullMachine
+        {
+            get
+            {
+                return SteamVR_Actions.default_PullMachine;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PushMachine
+        {
+            get
+            {
+                return SteamVR_Actions.default_PushMachine;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

@@ -3,10 +3,12 @@
 public class ControllerPointer : MonoBehaviour
 {
     public Vector3 TargetPosition;
-    public bool CanTeleport;
+    public bool CanGrab;
     public Color color;
-    public float thickness = 0.002f;
-    public float length = 100f;
+    public float thickness = 0.01f;
+    public float length = 30f;
+
+    public GameObject grabObject;
 
     GameObject holder;
     GameObject pointer;
@@ -68,20 +70,25 @@ public class ControllerPointer : MonoBehaviour
         Ray raycast = new Ray(transform.position, transform.forward);
 
         RaycastHit hitObject;
-        bool rayHit = Physics.Raycast(raycast, out hitObject);
+        bool rayHit = Physics.Raycast(raycast, out hitObject, 30f);
         if (rayHit)
         {
-            Debug.Log("gameObject: " + hitObject.collider.gameObject.name);
-            if (hitObject.collider.gameObject.GetComponent<AllowTeleportation>())
+            if (hitObject.collider.gameObject.GetComponent<GrabbableObject>())
             {
-                CanTeleport = true;
+                CanGrab = true;
                 TargetPosition = hitObject.point;
+                grabObject = hitObject.collider.gameObject;
                 UpdateColor(Color.green);
             } else
             {
-                CanTeleport = false;
+                grabObject = null;
+                CanGrab = false;
                 UpdateColor(Color.red);
             }
+        }
+        else
+        {
+            UpdateColor(Color.grey);
         }
 
         float beamLength = GetBeamLength(rayHit, hitObject);

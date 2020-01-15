@@ -121,7 +121,7 @@ public class PunManager : MonoBehaviourPunCallbacks
 
     private void Update ()
     {
-        if (Time.time > 3f)
+        if (Time.time > 1f)
         {
             PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
         }

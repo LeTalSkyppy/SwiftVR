@@ -38,6 +38,7 @@ namespace Valve.VR.InteractionSystem
         private Vector3 projectileVelocity;
         private bool useGravity = true;
         private Transform arcObjectsTransfrom;
+
         private bool arcInvalid = false;
         private float scale = 1;
 
@@ -107,6 +108,7 @@ namespace Valve.VR.InteractionSystem
         {
             startPos = position;
             projectileVelocity = velocity;
+            Debug.Log(projectileVelocity.ToString());
             useGravity = gravity;
 
             if (arcInvalid && !pointerAtBadAngle)

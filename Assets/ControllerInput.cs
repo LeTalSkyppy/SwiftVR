@@ -127,7 +127,7 @@ public class ControllerInput : MonoBehaviour
 
     private void TeleportReleased()
     {
-        if(controllerPointer.CanTeleport)
+        if(controllerPointer.CanGrab)
         {
             GameObject camera = GameObject.Find("Camera");
             GameObject cameraRIG = GameObject.Find("[CameraRig]");

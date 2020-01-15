@@ -1,16 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
-    public OrbitCamera orbitCam;
+    public static PlayerController myPlayer;
+
+    public GameObject orbitCameraPrefab;
+    protected OrbitCamera orbitCam;
+    public GameObject canvasUI;
+
     [Tooltip("running will double this speed")]
     public float speed = 1f;
     public bool requestCursorLock = true;
 
-    protected CharacterController cc;
+    protected Rigidbody rb;
     protected Animator anim;
     // list of previous directions to smooth the rotation
     protected List<Vector3> directions = new List<Vector3>();
@@ -21,24 +26,42 @@ public class PlayerController : MonoBehaviour
     // is cursor locked
     protected bool isCursorLocked = false;
 
+    private void Awake ()
+    {
+        if (photonView.IsMine)
+        {
+            myPlayer = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
-        cc = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        if (photonView.IsMine)
+        {
+            orbitCam = Instantiate(orbitCameraPrefab, transform.position - Vector3.forward, transform.rotation).GetComponent<OrbitCamera>();
+            orbitCam.target = transform;
+            Instantiate(canvasUI, Vector3.zero, Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (!photonView.IsMine)
+            return;
+
         UpdateCursor();
+
+        if (!Camera.main)
+            return;
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-
-        if (!Camera.main)
-        {
-            return;
-        }
 
         Vector3 dir = x * Camera.main.transform.right + y * Camera.main.transform.forward;
 
@@ -75,7 +98,9 @@ public class PlayerController : MonoBehaviour
 
         anim?.SetFloat("speed", dirXZ.magnitude);
 
-        //cc.SimpleMove(dirXZ * speed);
+        Vector3 velXZ = Vector3.ProjectOnPlane(rb.velocity, Vector3.up);
+
+        rb.AddForce((dirXZ * speed - velXZ * 0.25f) * rb.mass, ForceMode.Impulse);
 
         directions.Add(dirXZ);
         // smooth the rotation
@@ -92,7 +117,10 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         // control the camera if cursor is locked or if left mouse clicking
-        orbitCam.CameraUpdate(((!requestCursorLock && Input.GetMouseButton(0)) || isCursorLocked));
+        if (photonView.IsMine)
+        {
+            orbitCam.CameraUpdate(((!requestCursorLock && Input.GetMouseButton(0)) || isCursorLocked));
+        }
     }
 
     protected void UpdateCursor()

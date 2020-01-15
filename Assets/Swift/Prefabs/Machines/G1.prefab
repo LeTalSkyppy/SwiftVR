@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4410477210552896}
   - component: {fileID: 33709875029122150}
-  - component: {fileID: 65352175365143396}
   - component: {fileID: 23174050444501254}
   m_Layer: 0
   m_Name: NameOfMachine
@@ -121,19 +120,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023861306592886}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65352175365143396
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023861306592886}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &23174050444501254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -730,6 +716,7 @@ GameObject:
   - component: {fileID: 4111870613625540}
   - component: {fileID: 33175531830757020}
   - component: {fileID: 23481867389143006}
+  - component: {fileID: 8686318051562342371}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -798,6 +785,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8686318051562342371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168648687449840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9900002, y: 2, z: 0.4900001}
+  m_Center: {x: 0.00000047683716, y: 0, z: 0}
 --- !u!1 &1180847705582438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,9 +1241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198136007912004}
   - component: {fileID: 33306670929655614}
-  - component: {fileID: 64134300677013456}
   - component: {fileID: 23011471311252206}
-  - component: {fileID: 65852206031046362}
   m_Layer: 8
   m_Name: MachineArea
   m_TagString: Untagged
@@ -1272,20 +1270,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245087727434220}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64134300677013456
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245087727434220}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23011471311252206
 MeshRenderer:
@@ -1326,19 +1310,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65852206031046362
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245087727434220}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.0000001, z: 6.123235e-17}
-  m_Center: {x: -0.0000009536743, y: 0, z: 0.000000016763806}
 --- !u!1 &1255034761594536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,7 +1941,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4809112706810624}
   - component: {fileID: 33747950070497826}
-  - component: {fileID: 64123445228294676}
   - component: {fileID: 23460840937826406}
   m_Layer: 8
   m_Name: FreeBorder1
@@ -2000,20 +1970,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374559487801414}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64123445228294676
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374559487801414}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23460840937826406
 MeshRenderer:
@@ -2618,7 +2574,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4556152974367838}
   - component: {fileID: 33598740443041770}
-  - component: {fileID: 64912535840574728}
   - component: {fileID: 23302796752960704}
   m_Layer: 8
   m_Name: FreeBorder4 (1)
@@ -2648,20 +2603,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474820730363274}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64912535840574728
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474820730363274}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23302796752960704
 MeshRenderer:
@@ -2868,7 +2809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4963545878973618}
   - component: {fileID: 33164846001824676}
-  - component: {fileID: 64528642838575732}
   - component: {fileID: 23900751265269506}
   m_Layer: 8
   m_Name: FreeBorder4
@@ -2898,20 +2838,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503850218897848}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64528642838575732
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503850218897848}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23900751265269506
 MeshRenderer:
@@ -4876,7 +4802,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4224673556150782}
   - component: {fileID: 33077085051744400}
-  - component: {fileID: 64573342236111028}
   - component: {fileID: 23110500944360774}
   m_Layer: 8
   m_Name: FreeBorder2
@@ -4906,20 +4831,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921316235009252}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64573342236111028
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921316235009252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &23110500944360774
 MeshRenderer:

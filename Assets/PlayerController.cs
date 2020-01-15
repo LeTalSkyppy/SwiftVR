@@ -98,7 +98,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         anim?.SetFloat("speed", dirXZ.magnitude);
 
-        rb.velocity = dirXZ * speed;
+        Vector3 velXZ = Vector3.ProjectOnPlane(rb.velocity, Vector3.up);
+
+        rb.AddForce((dirXZ * speed - velXZ * 0.25f) * rb.mass, ForceMode.Impulse);
 
         directions.Add(dirXZ);
         // smooth the rotation

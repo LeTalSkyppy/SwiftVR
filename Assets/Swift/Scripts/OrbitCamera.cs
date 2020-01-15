@@ -29,7 +29,12 @@ public class OrbitCamera : MonoBehaviour
     private float desiredDistance;
     private float correctedDistance;
 
-    void Start()
+    private void Awake ()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
     {
         x = 0;
         y = 20;

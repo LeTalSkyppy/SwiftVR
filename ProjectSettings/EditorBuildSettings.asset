@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Swift/Scenes/InitPhoton.unity
+    guid: 26470e914061eda419aee4be29f17638
+  - enabled: 1
+    path: Assets/Swift/Scenes/Lobby.unity
+    guid: aaaa5d273e85a014a884030d7a839069
   - enabled: 1
     path: Assets/Swift/Scenes/SwiftShopLayout.unity
     guid: 5ffe2dd1ab31f344fbefd42b263d33e7

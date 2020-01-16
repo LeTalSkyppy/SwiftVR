@@ -8,8 +8,18 @@ using UnityEngine.UI;
 
 public class PunManager : MonoBehaviourPunCallbacks
 {
+    public enum DeviceType
+    {
+        NA,
+        VR,
+        AR,
+        PC
+    }
     public Image blackScreen;
+    public GameObject vrPlayerPrefab;
     public GameObject thirdPersonPlayerPrefab;
+    [ReadOnly]
+    public DeviceType deviceType;
     public string ipAddress;
 
     public float lobbyTime = 10f;
@@ -99,7 +109,19 @@ public class PunManager : MonoBehaviourPunCallbacks
             yield return null;
         }
         
-        PhotonNetwork.Instantiate(thirdPersonPlayerPrefab.name, SpawnPoint.point.position, SpawnPoint.point.rotation, 0);
+        switch (deviceType)
+        {
+            case DeviceType.NA:
+                throw new Exception("No device");
+            case DeviceType.VR:
+                Debug.Log("Start VR mode");
+                PhotonNetwork.Instantiate(vrPlayerPrefab.name, SpawnPoint.point.position, SpawnPoint.point.rotation, 0);
+            break;
+            case DeviceType.PC:
+                Debug.Log("Start PC mode");
+                PhotonNetwork.Instantiate(thirdPersonPlayerPrefab.name, SpawnPoint.point.position, SpawnPoint.point.rotation, 0);
+            break;
+        }
         
         for (float i = 1; i >= 0; i -= 0.02f)
         {
@@ -119,11 +141,25 @@ public class PunManager : MonoBehaviourPunCallbacks
         Debug.LogError("Failed to create room : " + message);
     }
 
+    public void SteamReady (bool isVR)
+    {
+        Debug.Log("Steam ready");
+
+        deviceType = isVR ? DeviceType.VR : DeviceType.PC;
+        PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
+    }
+
     private void Update ()
     {
-        if (Time.time > 1f)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
+            Debug.Log("EXPORT CONFIG");
+            Configuration.Export();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Debug.Log("IMPORT CONFIG");
+            Configuration.Import();
         }
         if (PhotonNetwork.InLobby)
         {

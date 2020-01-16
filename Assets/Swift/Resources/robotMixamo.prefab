@@ -1640,6 +1640,7 @@ GameObject:
   - component: {fileID: -1256796619456514659}
   - component: {fileID: 3665283841606954234}
   - component: {fileID: 3351394700878337715}
+  - component: {fileID: -8221651942928206090}
   m_Layer: 0
   m_Name: robotMixamo
   m_TagString: Untagged
@@ -1768,6 +1769,22 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &-8221651942928206090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431220904219678392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6447465341228262109
 GameObject:
   m_ObjectHideFlags: 0

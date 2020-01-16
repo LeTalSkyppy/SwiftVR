@@ -111,4 +111,34 @@ public static class Configuration
             throw new FormatException();
         }
     }
+
+    static public void Export ()
+    {
+        Exportable[] exportables = GameObject.FindObjectsOfType<Exportable>();
+
+        Debug.Log(exportables.Length);
+
+        Config config = new Config();
+        config.elements = new Config.Element[exportables.Length];
+
+        int i = 0;
+        foreach (Exportable exportable in exportables)
+        {
+            config.elements[i++] = new Config.Element(exportable.name, exportable.transform.position, exportable.transform.rotation);
+        }
+
+        SerializeToFile(config, "./this_is_the_config.json");
+    }
+
+    static public void Import ()
+    {
+        Config config = DeserializeFromFile("./this_is_the_config.json");
+
+        foreach (Config.Element element in config.elements)
+        {
+            GameObject obj = GameObject.Find(element.name);
+            obj.transform.position = element.position;
+            obj.transform.rotation = element.rotation;
+        }
+    }
 }

@@ -1238,7 +1238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4318937837251753999}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8006010966590514347}
@@ -1655,7 +1655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6431220904219678392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5592701909849584329}
@@ -1674,7 +1674,7 @@ Animator:
   m_GameObject: {fileID: 6431220904219678392}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0973692c729b878468bbfaa57ce5c6c8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edfd33936522be043b3000189e47a670, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1694,9 +1694,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!54 &-6042135425352105824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1729,7 +1729,8 @@ MonoBehaviour:
     type: 3}
   canvasUI: {fileID: 2616936378020144924, guid: 8427211d74b66f34daef2847c7aaceef,
     type: 3}
-  speed: 1
+  speed: 8
+  runMultiplier: 1
   requestCursorLock: 1
 --- !u!114 &3665283841606954234
 MonoBehaviour:
@@ -1749,7 +1750,7 @@ MonoBehaviour:
   Synchronization: 2
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: -9027826027368259079, guid: 06476dca743164f46ae084c5f1469c0e, type: 3}
+  - {fileID: 3351394700878337715}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

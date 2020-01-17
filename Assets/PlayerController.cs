@@ -13,16 +13,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     [Tooltip("running will double this speed")]
     public float speed = 1f;
+    public float runMultiplier = 1f;
     public bool requestCursorLock = true;
 
     protected Rigidbody rb;
     protected Animator anim;
-    // list of previous directions to smooth the rotation
-    protected List<Vector3> directions = new List<Vector3>();
-    // time when start running to smooth in
-    protected float runStart;
-    // time when stop running to smooth out
-    protected float runStop;
+    
     // is cursor locked
     protected bool isCursorLocked = false;
 
@@ -64,54 +60,39 @@ public class PlayerController : MonoBehaviourPunCallbacks
         float y = Input.GetAxis("Vertical");
 
         Vector3 dir = x * Camera.main.transform.right + y * Camera.main.transform.forward;
+        Vector3 lookDir = Camera.main.transform.forward;
 
         Vector3 dirXZ = Vector3.ProjectOnPlane(dir, Vector3.up);
+        Vector3 lookDirXZ = Vector3.ProjectOnPlane(lookDir, Vector3.up).normalized;
 
-        if (dirXZ.magnitude < Mathf.Epsilon)
-        {
-            anim?.SetFloat("speed", 0f);
-            return;
-        }
+        float h = 0f;
+        float v = 0f;
 
-        if (dirXZ.magnitude > 1f)
+        if (dirXZ.magnitude > Mathf.Epsilon)
         {
-            dirXZ.Normalize();
-        }
+            float speedMagnitude = dirXZ.magnitude;
+            Vector3 moveDir = dirXZ.normalized;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            runStart = Time.time;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            runStop = Time.time;
+            float moveAngle = Mathf.Atan2(moveDir.x, moveDir.z);
+            float lookAngle = Mathf.Atan2(lookDirXZ.x, lookDirXZ.z);
+
+            float angle = lookAngle - moveAngle;
+
+            v = Mathf.Cos(angle);
+            h = Mathf.Sin(angle);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            dirXZ *= Mathf.Lerp(1, 2, (Time.time - runStart)*2);
-        }
-        else
-        {
-            dirXZ *= Mathf.Lerp(2, 1, (Time.time - runStop) * 2);
-        }
+        // set the rotation
+        transform.LookAt(transform.position + lookDirXZ);
 
-        anim?.SetFloat("speed", dirXZ.magnitude);
+        runMultiplier = Input.GetKey(KeyCode.LeftShift) ? 2 : 1;
+
+        anim.SetFloat("vertical", v * runMultiplier);
+        anim.SetFloat("horizontal", h);
 
         Vector3 velXZ = Vector3.ProjectOnPlane(rb.velocity, Vector3.up);
 
         rb.AddForce((dirXZ * speed - velXZ * 0.25f) * rb.mass, ForceMode.Impulse);
-
-        directions.Add(dirXZ);
-        // smooth the rotation
-        if (directions.Count > 5)
-        {
-            directions.RemoveAt(0);
-        }
-        // by using the average of the 5 previous values
-        Vector3 average = directions.Aggregate(new Vector3(0, 0, 0), (s, v) => s + v) / (float)directions.Count;
-        // set the rotation
-        transform.LookAt(transform.position + average);
     }
 
     private void LateUpdate()

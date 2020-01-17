@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 576562062}
-  thirdPersonPlayerPrefab: {fileID: 280999595786594079, guid: 06476dca743164f46ae084c5f1469c0e,
+  thirdPersonPlayerPrefab: {fileID: 6431220904219678392, guid: 9e401480b151a1447adc418137566b2f,
     type: 3}
   ipAddress: 10.144.50.31
   lobbyTime: 3

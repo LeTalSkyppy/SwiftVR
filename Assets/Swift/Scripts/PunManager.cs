@@ -18,6 +18,7 @@ public class PunManager : MonoBehaviourPunCallbacks
     public Image blackScreen;
     public GameObject vrPlayerPrefab;
     public GameObject thirdPersonPlayerPrefab;
+    public DeviceType editorDeviceType;
     [ReadOnly]
     public DeviceType deviceType;
     public string ipAddress;
@@ -81,7 +82,7 @@ public class PunManager : MonoBehaviourPunCallbacks
     public void JoinRoom ()
     {
         RoomOptions opt = new RoomOptions();
-        opt.MaxPlayers = 7;
+        opt.MaxPlayers = 10;
 
         PhotonNetwork.JoinOrCreateRoom("The Game", opt, TypedLobby.Default);
     }
@@ -108,6 +109,9 @@ public class PunManager : MonoBehaviourPunCallbacks
         {
             yield return null;
         }
+
+        if (Application.isEditor && editorDeviceType != DeviceType.NA)
+            deviceType = editorDeviceType;
         
         switch (deviceType)
         {

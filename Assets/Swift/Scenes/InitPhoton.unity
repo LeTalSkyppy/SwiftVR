@@ -590,12 +590,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 576562062}
-  vrPlayerPrefab: {fileID: 632591815200354527, guid: 50fba1674f679684b84e4f3c46108fd3,
+  vrPlayerPrefab: {fileID: 7575581219636261925, guid: 32f0aeadbdaa47c4590cc403ff34ba23,
     type: 3}
-  thirdPersonPlayerPrefab: {fileID: 280999595786594079, guid: 06476dca743164f46ae084c5f1469c0e,
+  thirdPersonPlayerPrefab: {fileID: 6431220904219678392, guid: 9e401480b151a1447adc418137566b2f,
     type: 3}
+  editorDeviceType: 1
   deviceType: 0
-  ipAddress: 10.144.50.31
+  ipAddress: 192.168.127.1
   lobbyTime: 3
 --- !u!4 &875600834
 Transform:
@@ -769,7 +770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990029744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -94.17275, y: 2.6289048, z: 42.019882}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -13,11 +13,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     [Tooltip("running will double this speed")]
     public float speed = 1f;
+    [ReadOnly]
     public float runMultiplier = 1f;
     public bool requestCursorLock = true;
 
+    public int smoothing = 3;
+
     protected Rigidbody rb;
     protected Animator anim;
+
+    protected List<float> cos = new List<float>();
+    protected List<float> sin = new List<float>();
     
     // is cursor locked
     protected bool isCursorLocked = false;
@@ -58,37 +64,19 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+        
+        runMultiplier = Mathf.Lerp(runMultiplier, Input.GetKey(KeyCode.LeftShift) ? 2 : 1, Time.fixedDeltaTime * 5f);
 
-        Vector3 dir = x * Camera.main.transform.right + y * Camera.main.transform.forward;
-        Vector3 lookDir = Camera.main.transform.forward;
-
-        Vector3 dirXZ = Vector3.ProjectOnPlane(dir, Vector3.up);
-        Vector3 lookDirXZ = Vector3.ProjectOnPlane(lookDir, Vector3.up).normalized;
-
-        float h = 0f;
-        float v = 0f;
-
-        if (dirXZ.magnitude > Mathf.Epsilon)
-        {
-            float speedMagnitude = dirXZ.magnitude;
-            Vector3 moveDir = dirXZ.normalized;
-
-            float moveAngle = Mathf.Atan2(moveDir.x, moveDir.z);
-            float lookAngle = Mathf.Atan2(lookDirXZ.x, lookDirXZ.z);
-
-            float angle = lookAngle - moveAngle;
-
-            v = Mathf.Cos(angle);
-            h = Mathf.Sin(angle);
-        }
+        Vector3 forwardXZ = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
+        Vector3 dirXZ = x * Camera.main.transform.right + y * forwardXZ * runMultiplier;
+        Vector3 lookDirXZ = forwardXZ;
 
         // set the rotation
-        transform.LookAt(transform.position + lookDirXZ);
+        if (dirXZ.magnitude > Mathf.Epsilon)
+            transform.LookAt(transform.position + lookDirXZ);
 
-        runMultiplier = Input.GetKey(KeyCode.LeftShift) ? 2 : 1;
-
-        anim.SetFloat("vertical", v * runMultiplier);
-        anim.SetFloat("horizontal", h);
+        anim.SetFloat("vertical", y * runMultiplier);
+        anim.SetFloat("horizontal", x);
 
         Vector3 velXZ = Vector3.ProjectOnPlane(rb.velocity, Vector3.up);
 

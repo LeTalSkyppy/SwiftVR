@@ -8,7 +8,7 @@ public class F1 : Machine
     void Start()
     {
         busy = false;
-        timeToProduct = 30f;
+        timeToProduct = 30f / 3f;
         productTime = timeToProduct;
         productsMachine.Add("F1A","none");
         productsMachine.Add("F1D","none");

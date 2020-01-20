@@ -7,7 +7,7 @@ public class F2 : Machine
     // Start is called before the first frame update
     void Start()
     {
-        timeToProduct = 20f;
+        timeToProduct = 20f / 3f;
         productTime = timeToProduct;
         busy = false;
 

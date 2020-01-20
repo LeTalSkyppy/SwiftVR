@@ -9,7 +9,7 @@ public class F3 : Machine
     void Start()
     {
         busy = false;
-        timeToProduct = 15f;
+        timeToProduct = 15f / 3f;
         productTime = timeToProduct;
 
         productsMachine.Add("F3C", "none");

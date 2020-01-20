@@ -7,7 +7,7 @@ public class G2 : Machine
     void Start()
     {
         busy = false;
-        timeToProduct = 20f;
+        timeToProduct = 20f / 3f;
         productTime = timeToProduct;
 
         productsMachine.Add("G2B", "none");

@@ -7,7 +7,7 @@ public class P3 : Machine
     void Start()
     {
         busy = false;
-        timeToProduct = 60f;
+        timeToProduct = 60f / 3f;
         productTime = timeToProduct;
 
         productsMachine.Add("P3E", "F4E");

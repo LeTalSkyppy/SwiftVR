@@ -7,7 +7,7 @@ public class T3 : Machine
     void Start()
     {
         busy = false;
-        timeToProduct = 60f;
+        timeToProduct = 60f/3f;
         productTime = timeToProduct;
 
         productsMachine.Add("T3B", "G2B");

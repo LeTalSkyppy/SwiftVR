@@ -10,11 +10,10 @@ public class PunManager : MonoBehaviourPunCallbacks
 {
     public Image blackScreen;
     public GameObject thirdPersonPlayerPrefab;
-    public string ipAddress;
-
     public float lobbyTime = 10f;
     protected float timer = 0;
 
+    public GameObject connectingString;
     private  void Awake ()
     {
         //PhotonNetwork.AutomaticallySyncScene = true;
@@ -121,10 +120,6 @@ public class PunManager : MonoBehaviourPunCallbacks
 
     private void Update ()
     {
-        if (Time.time > 1f)
-        {
-            PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
-        }
         if (PhotonNetwork.InLobby)
         {
             if (timer >= lobbyTime)
@@ -136,5 +131,11 @@ public class PunManager : MonoBehaviourPunCallbacks
                 timer += Time.deltaTime;
             }
         }
+    }
+
+    public void OnEndEdit(string ip)
+    {
+        connectingString.SetActive(true);
+        PhotonNetwork.ConnectToMaster(ip, 5055, "appId");
     }
 }

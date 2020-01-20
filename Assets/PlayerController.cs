@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public static PlayerController myPlayer;
 
     public GameObject orbitCameraPrefab;
-    protected OrbitCamera orbitCam;
+    public OrbitCamera orbitCam;
     public GameObject canvasUI;
 
     [Tooltip("running will double this speed")]

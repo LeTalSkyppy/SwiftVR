@@ -1641,6 +1641,8 @@ GameObject:
   - component: {fileID: 3665283841606954234}
   - component: {fileID: -940988834587831689}
   - component: {fileID: -8221651942928206090}
+  - component: {fileID: -4310536043725660346}
+  - component: {fileID: -3747312552765413375}
   m_Layer: 0
   m_Name: robotMixamo
   m_TagString: Untagged
@@ -1728,6 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitCameraPrefab: {fileID: 2472273190542566233, guid: a5310cb0ee3aa6240bd98922cabd47d9,
     type: 3}
+  orbitCam: {fileID: 0}
   canvasUI: {fileID: 2616936378020144924, guid: 8427211d74b66f34daef2847c7aaceef,
     type: 3}
   speed: 8
@@ -1805,6 +1808,41 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-4310536043725660346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431220904219678392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc0c4b99de4e2a4babadd76215870cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  layerMaskMachine: 0
+--- !u!114 &-3747312552765413375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431220904219678392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a043c731a29ecd745a9270fbf002ee68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segmentCount: 60
+  thickness: 0.01
+  arcDuration: 3
+  segmentBreak: 0.025
+  arcSpeed: 0.2
+  material: {fileID: 2100000, guid: 140bd0e59d9bee94f9f0284c9eef5b32, type: 2}
+  traceLayerMask: 0
 --- !u!1 &6447465341228262109
 GameObject:
   m_ObjectHideFlags: 0

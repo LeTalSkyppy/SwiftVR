@@ -75,11 +75,12 @@ public class ControllerPointer : MonoBehaviour
         bool rayHit = Physics.Raycast(raycast, out hitObject, 30f);
         if (rayHit)
         {
-            if (hitObject.collider.gameObject.GetComponent<GrabbableObject>())
+            if (hitObject.collider.GetComponent<GrabbableObject>())
             {
                 CanGrab = true;
                 TargetPosition = hitObject.point;
                 grabObject = hitObject.collider.gameObject;
+                
                 if(outline == null)
                 {
                     outline = grabObject.AddComponent<Outline>();
@@ -87,13 +88,15 @@ public class ControllerPointer : MonoBehaviour
                     outline.OutlineColor = Color.cyan;
                     outline.OutlineWidth = 8.0f;
                 }
+
+
                 
                 UpdateColor(Color.green);
-            } else
+            }
+            else
             {
                 grabObject = null;
                 CanGrab = false;
-
                 Destroy(outline);
                 UpdateColor(Color.red);
             }

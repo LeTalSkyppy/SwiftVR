@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public float runMultiplier = 1f;
     public bool requestCursorLock = true;
 
-    public int smoothing = 3;
-
     protected Rigidbody rb;
     protected Animator anim;
 
@@ -65,7 +63,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         
-        runMultiplier = Mathf.Lerp(runMultiplier, Input.GetKey(KeyCode.LeftShift) ? 2 : 1, Time.fixedDeltaTime * 5f);
+        runMultiplier = Mathf.Lerp(runMultiplier, Input.GetKey(KeyCode.LeftShift) ? 3 : 1, Time.fixedDeltaTime * 5f);
 
         Vector3 forwardXZ = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
         Vector3 dirXZ = x * Camera.main.transform.right + y * forwardXZ * runMultiplier;

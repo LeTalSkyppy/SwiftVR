@@ -1,30 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Valve.VR;
+using System;
 
 public class HTC_or_TP : MonoBehaviour
 {
+    [Serializable]
+    public class Ready : UnityEvent<bool> { };
+    public Ready ready;
 
-    public delegate void HMDed();
-    public static event HMDed hmded; 
+    private void OnEnable ()
+    {
+        Debug.Log("Initialize Steam VR");
 
-    public delegate void ThirdPersoned();
-    public static event ThirdPersoned thirdPersoned;
+        SteamVR.Initialize();
+    }
+
     private IEnumerator Start()
     {
-        Debug.Log("Coucou");
          while (SteamVR.initializedState == SteamVR.InitializedStates.None || SteamVR.initializedState == SteamVR.InitializedStates.Initializing)
-                yield return null;
-                
-        Debug.Log("TG PD" +SteamVR.instance);
-        if(SteamVR.instance != null)
-        {
-            hmded();
-        }
-        else
-        {
-            thirdPersoned();
-        }
+             yield return null;
+
+         ready.Invoke(SteamVR.instance != null);
     }
 }

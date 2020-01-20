@@ -8,8 +8,21 @@ using UnityEngine.UI;
 
 public class PunManager : MonoBehaviourPunCallbacks
 {
+    public enum DeviceType
+    {
+        NA,
+        VR,
+        AR,
+        PC
+    }
     public Image blackScreen;
+    public GameObject vrPlayerPrefab;
     public GameObject thirdPersonPlayerPrefab;
+    public DeviceType editorDeviceType;
+    [ReadOnly]
+    public DeviceType deviceType;
+    public string ipAddress;
+
     public float lobbyTime = 10f;
     protected float timer = 0;
 
@@ -70,7 +83,7 @@ public class PunManager : MonoBehaviourPunCallbacks
     public void JoinRoom ()
     {
         RoomOptions opt = new RoomOptions();
-        opt.MaxPlayers = 7;
+        opt.MaxPlayers = 10;
 
         PhotonNetwork.JoinOrCreateRoom("The Game", opt, TypedLobby.Default);
     }
@@ -97,8 +110,23 @@ public class PunManager : MonoBehaviourPunCallbacks
         {
             yield return null;
         }
+
+        if (Application.isEditor && editorDeviceType != DeviceType.NA)
+            deviceType = editorDeviceType;
         
-        PhotonNetwork.Instantiate(thirdPersonPlayerPrefab.name, SpawnPoint.point.position, SpawnPoint.point.rotation, 0);
+        switch (deviceType)
+        {
+            case DeviceType.NA:
+                throw new Exception("No device");
+            case DeviceType.VR:
+                Debug.Log("Start VR mode");
+                PhotonNetwork.Instantiate(vrPlayerPrefab.name, SpawnPoint.point.position, SpawnPoint.point.rotation, 0);
+            break;
+            case DeviceType.PC:
+                Debug.Log("Start PC mode");
+                PhotonNetwork.Instantiate(thirdPersonPlayerPrefab.name, SpawnPoint.point.position, SpawnPoint.point.rotation, 0);
+            break;
+        }
         
         for (float i = 1; i >= 0; i -= 0.02f)
         {
@@ -118,8 +146,26 @@ public class PunManager : MonoBehaviourPunCallbacks
         Debug.LogError("Failed to create room : " + message);
     }
 
+    public void SteamReady (bool isVR)
+    {
+        Debug.Log("Steam ready");
+
+        deviceType = isVR ? DeviceType.VR : DeviceType.PC;
+        PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
+    }
+
     private void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("EXPORT CONFIG");
+            Configuration.Export();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Debug.Log("IMPORT CONFIG");
+            Configuration.Import();
+        }
         if (PhotonNetwork.InLobby)
         {
             if (timer >= lobbyTime)

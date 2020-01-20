@@ -124,6 +124,10 @@ public class GrabMachine : MonoBehaviour
 
     private void GrabReleased()
     {
+        if(controllerPointer.outline != null)
+        {
+            Destroy(controllerPointer.outline);
+        }
         if(controllerPointer == null)
         {
             controllerPointer = gameObject.AddComponent<ControllerPointer>();

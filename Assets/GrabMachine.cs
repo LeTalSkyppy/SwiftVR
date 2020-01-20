@@ -87,7 +87,7 @@ public class GrabMachine : MonoBehaviour
         {
             Ray raycast = new Ray(transform.position, transform.forward);
             RaycastHit hitObject;
-            if(Physics.Raycast(raycast, out hitObject, 30f, layerMaskMachine))
+            if(Physics.Raycast(raycast, out hitObject, 100f, layerMaskMachine))
             {
                 Vector3 position = new Vector3(hitObject.point.x, grabObject.transform.position.y, hitObject.point.z);
                 grabObject.transform.position = position;

@@ -10,6 +10,8 @@ public class ControllerPointer : MonoBehaviour
 
     public GameObject grabObject;
 
+    public Outline outline;
+
     GameObject holder;
     GameObject pointer;
     GameObject cursor;
@@ -78,11 +80,21 @@ public class ControllerPointer : MonoBehaviour
                 CanGrab = true;
                 TargetPosition = hitObject.point;
                 grabObject = hitObject.collider.gameObject;
+                if(outline == null)
+                {
+                    outline = grabObject.AddComponent<Outline>();
+                    outline.OutlineMode = Outline.Mode.OutlineVisible;
+                    outline.OutlineColor = Color.cyan;
+                    outline.OutlineWidth = 8.0f;
+                }
+                
                 UpdateColor(Color.green);
             } else
             {
                 grabObject = null;
                 CanGrab = false;
+
+                Destroy(outline);
                 UpdateColor(Color.red);
             }
         }

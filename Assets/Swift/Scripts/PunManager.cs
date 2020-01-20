@@ -148,10 +148,7 @@ public class PunManager : MonoBehaviourPunCallbacks
 
     public void SteamReady (bool isVR)
     {
-        Debug.Log("Steam ready");
-
-        deviceType = isVR ? DeviceType.VR : DeviceType.PC;
-        PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
+        //stay vide
     }
 
     private void Update ()
@@ -182,6 +179,7 @@ public class PunManager : MonoBehaviourPunCallbacks
     public void OnEndEdit(string ip)
     {
         connectingString.SetActive(true);
+        deviceType = DeviceType.AR;        
         PhotonNetwork.ConnectToMaster(ip, 5055, "appId");
     }
 }

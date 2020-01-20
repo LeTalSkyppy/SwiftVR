@@ -1733,9 +1733,10 @@ MonoBehaviour:
   orbitCam: {fileID: 0}
   canvasUI: {fileID: 2616936378020144924, guid: 8427211d74b66f34daef2847c7aaceef,
     type: 3}
-  speed: 8
+  speed: 1
   runMultiplier: 1
   requestCursorLock: 1
+  smoothing: 3
 --- !u!114 &3665283841606954234
 MonoBehaviour:
   m_ObjectHideFlags: 0

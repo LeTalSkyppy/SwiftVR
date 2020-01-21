@@ -1,70 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class GrabMachine : MonoBehaviour
+public class GrabMachinePC : MonoBehaviour
 {
-    SteamVR_Input_Sources inputSource;
-    SteamVR_Behaviour_Pose pose;
-
     private bool isGrabbing = false;
-
     private bool rotateH = false;
-
     private bool rotateAH = false;
     private TeleportArc teleportArc = null;
-
     private GameObject grabObject;
-
     private float speedoRotato = 100f;
-
     private bool displayArc = false;
     ControllerPointer controllerPointer;
-
     public LayerMask layerMask;
+
+    private GameObject TPCamera;
 
     public int layerMaskMachine;
     void Start()
     {
         layerMaskMachine = LayerMask.GetMask("MovableArea");
+        TPCamera = gameObject.GetComponent<PlayerController>().orbitCam.gameObject;
+        controllerPointer = TPCamera.AddComponent<ControllerPointer>();
     }
 
     void Update()
     {
-        if(SteamVR_Actions._default.GrabMachine.GetStateDown(inputSource))
+        if(Input.GetMouseButtonDown(0))
         {
-            isGrabbing = true;
             GrabPressed();
         }
 
-        if(SteamVR_Actions._default.GrabMachine.GetStateUp(inputSource))
+        if(Input.GetMouseButtonUp(0))
         {
-            isGrabbing = false;
             GrabReleased();
         }
-
-        if(SteamVR_Actions._default.RotateHoraire.GetStateDown(inputSource))
-        {
-            rotateH = true;
-        }
-
-        if(SteamVR_Actions._default.RotateHoraire.GetStateUp(inputSource))
-        {
-            rotateH = false;
-        }
-
-        if(SteamVR_Actions._default.RotateAntiHoraire.GetStateDown(inputSource))
-        {
-            rotateAH = true;
-        }
-
-        if(SteamVR_Actions._default.RotateAntiHoraire.GetStateUp(inputSource))
-        {
-            rotateAH = false;
-        }
-
         if(rotateH)
         {
             if(grabObject != null)
@@ -85,7 +56,7 @@ public class GrabMachine : MonoBehaviour
 
         if(grabObject != null)
         {
-            Ray raycast = new Ray(transform.position, transform.forward);
+            Ray raycast = new Ray(TPCamera.transform.position, TPCamera.transform.forward);
             RaycastHit hitObject;
             if(Physics.Raycast(raycast, out hitObject, 100f, layerMaskMachine))
             {
@@ -101,9 +72,6 @@ public class GrabMachine : MonoBehaviour
 
     void Awake()
     {
-        pose = GetComponent<SteamVR_Behaviour_Pose>();
-        inputSource =  pose.inputSource;
-        controllerPointer = gameObject.AddComponent<ControllerPointer>();
         teleportArc = GetComponent<TeleportArc>();
         teleportArc.traceLayerMask = layerMask;
     }
@@ -117,7 +85,6 @@ public class GrabMachine : MonoBehaviour
             Destroy(controllerPointer);
 
             displayArc = true;
-
            
         }
     }
@@ -130,7 +97,7 @@ public class GrabMachine : MonoBehaviour
         }
         if(controllerPointer == null)
         {
-            controllerPointer = gameObject.AddComponent<ControllerPointer>();
+            controllerPointer = TPCamera.AddComponent<ControllerPointer>();
         }
 
         if(grabObject != null)

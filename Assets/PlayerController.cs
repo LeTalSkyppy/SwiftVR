@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public GameObject orbitCameraPrefab;
     protected OrbitCamera orbitCam;
     public GameObject canvasUI;
+    private GameObject playerObj = null;
 
     [Tooltip("running will double this speed")]
     public float speed = 1f;
     public bool requestCursorLock = true;
 
+    protected Collider m_Collider;
     protected Rigidbody rb;
     protected Animator anim;
     // list of previous directions to smooth the rotation
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     protected float runStop;
     // is cursor locked
     protected bool isCursorLocked = false;
+    // activation is false
+    bool Activation = false; 
 
     private void Awake ()
     {
@@ -40,6 +44,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        m_Collider = GetComponent<Collider>();
+
+        if (playerObj == null){
+            playerObj = GameObject.FindGameObjectWithTag("Player");
+        } 
 
         if (photonView.IsMine)
         {
@@ -56,6 +65,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             return;
 
         UpdateCursor();
+        teleportation (); 
 
         if (!Camera.main)
             return;
@@ -111,7 +121,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         // by using the average of the 5 previous values
         Vector3 average = directions.Aggregate(new Vector3(0, 0, 0), (s, v) => s + v) / (float)directions.Count;
         // set the rotation
-        transform.LookAt(transform.position + average);
+        transform.LookAt(transform.position + average);       
     }
 
     private void LateUpdate()
@@ -148,4 +158,29 @@ public class PlayerController : MonoBehaviourPunCallbacks
             Cursor.visible = true;
         }
     }
+
+    private void teleportation (){
+        
+         if (Input.GetKeyDown(KeyCode.T))
+        {
+            Activation = !Activation;
+            Debug.Log("Activation = " + Activation);
+
+            if (Activation)
+            {
+                m_Collider.enabled = m_Collider.enabled;
+                playerObj.transform.position = new Vector3(playerObj.transform.position.x,playerObj.transform.position.y+5,playerObj.transform.position.z); 
+                m_Collider.enabled = m_Collider.enabled;
+            }
+            else
+            {
+                m_Collider.enabled = !m_Collider.enabled;
+                playerObj.transform.position = new Vector3(playerObj.transform.position.x,playerObj.transform.position.y-4,playerObj.transform.position.z); 
+                m_Collider.enabled = !m_Collider.enabled;
+
+            }
+        }   
+        
+    }
+
 }

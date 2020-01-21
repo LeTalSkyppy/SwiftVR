@@ -1103,6 +1103,7 @@ GameObject:
   - component: {fileID: 5266720902196485048}
   - component: {fileID: 5266720902196485028}
   - component: {fileID: 5266720902196485029}
+  - component: {fileID: 8115779304574888962}
   m_Layer: 0
   m_Name: G2
   m_TagString: Untagged
@@ -1311,6 +1312,18 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
+--- !u!114 &8115779304574888962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265236209879125269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbaa97ac99296049a1a1b3045e6b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5265250057770514773
 GameObject:
   m_ObjectHideFlags: 0

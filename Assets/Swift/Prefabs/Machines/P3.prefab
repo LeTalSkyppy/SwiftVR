@@ -2670,6 +2670,8 @@ GameObject:
   - component: {fileID: 8481364202173521421}
   - component: {fileID: 8473961448500876945}
   - component: {fileID: 8456422973270850662}
+  - component: {fileID: 9123844524381529095}
+  - component: {fileID: 5859747769176755618}
   m_Layer: 0
   m_Name: P3
   m_TagString: Untagged
@@ -2748,6 +2750,30 @@ MonoBehaviour:
   timerText: {fileID: 8121573960391984306}
   timerImage: {fileID: 5040885499084280310}
   nomPiece: {fileID: 422455746548713221}
+--- !u!114 &9123844524381529095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457709810621004505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcef0e775a4dad440b2223fd75510de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5859747769176755618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457709810621004505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbaa97ac99296049a1a1b3045e6b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8457729719279259863
 GameObject:
   m_ObjectHideFlags: 0

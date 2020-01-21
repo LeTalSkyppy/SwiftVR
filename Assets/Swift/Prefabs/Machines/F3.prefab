@@ -590,6 +590,8 @@ GameObject:
   - component: {fileID: 520872932016195433}
   - component: {fileID: 509508086735279891}
   - component: {fileID: 563104603189305289}
+  - component: {fileID: 3019338642330178511}
+  - component: {fileID: 5609210702338393973}
   m_Layer: 0
   m_Name: F3
   m_TagString: Untagged
@@ -668,6 +670,30 @@ MonoBehaviour:
   timerText: {fileID: 161587769642579605}
   timerImage: {fileID: 3999022624162964433}
   nomPiece: {fileID: 8599462992615453986}
+--- !u!114 &3019338642330178511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564101731916206603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcef0e775a4dad440b2223fd75510de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5609210702338393973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564101731916206603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbaa97ac99296049a1a1b3045e6b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &564123498171801773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,7 +1749,6 @@ GameObject:
   - component: {fileID: 550876696554001679}
   - component: {fileID: 541599903388157827}
   - component: {fileID: 8321372941529573360}
-  - component: {fileID: 563104603552140554}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1805,24 +1830,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9900002, y: 2, z: 0.4900001}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &563104603552140554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564330634295629795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0.83196235, b: 0, a: 1}
-  outlineWidth: 6
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &564334428091929377
 GameObject:
   m_ObjectHideFlags: 0

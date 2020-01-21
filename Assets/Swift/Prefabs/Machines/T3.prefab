@@ -2885,6 +2885,8 @@ GameObject:
   - component: {fileID: 4519268008962561920}
   - component: {fileID: 4508693038578999326}
   - component: {fileID: 4490156986219538271}
+  - component: {fileID: 9200035298744242511}
+  - component: {fileID: 5284150094138605316}
   m_Layer: 0
   m_Name: T3
   m_TagString: Untagged
@@ -2963,6 +2965,30 @@ MonoBehaviour:
   timerText: {fileID: 4305056836423176971}
   timerImage: {fileID: 1080811931946894927}
   nomPiece: {fileID: 5681255049716502716}
+--- !u!114 &9200035298744242511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491847450252736052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcef0e775a4dad440b2223fd75510de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5284150094138605316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491847450252736052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbaa97ac99296049a1a1b3045e6b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4491885299323803100
 GameObject:
   m_ObjectHideFlags: 0

@@ -108,7 +108,6 @@ namespace Valve.VR.InteractionSystem
         {
             startPos = position;
             projectileVelocity = velocity;
-            Debug.Log(projectileVelocity.ToString());
             useGravity = gravity;
 
             if (arcInvalid && !pointerAtBadAngle)

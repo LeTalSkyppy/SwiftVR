@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ac3764b2be1c342b57d3bb75b0f315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineOwned: []
+  exportables: []

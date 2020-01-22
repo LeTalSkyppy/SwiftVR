@@ -8453,6 +8453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ImportExport
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: viewIdField
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31cf39f32b675b408dcc33d072e94a1, type: 3}
 --- !u!114 &1179377776 stripped

@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 
-public class PunManager : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
+public class PunManager : MonoBehaviourPunCallbacks
 {
     public enum DeviceType
     {
@@ -36,19 +36,6 @@ public class PunManager : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
         PhotonNetwork.AuthValues.UserId = Guid.NewGuid().ToString();
     }
     
-    public override void OnEnable ()
-    {
-        base.OnEnable();
-
-        PhotonNetwork.AddCallbackTarget(this);
-    }
-
-    public override void OnDisable ()
-    {
-        base.OnDisable();
-
-        PhotonNetwork.RemoveCallbackTarget(this);
-    }
 
     public override void OnConnectedToMaster ()
     {
@@ -198,14 +185,4 @@ public class PunManager : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
         PhotonNetwork.ConnectToMaster(ip, 5055, "appId");
     }
     
-    void IPunOwnershipCallbacks.OnOwnershipRequest(PhotonView targetView, Player requestingPlayer)
-    {
-        //
-    }
-
-    void IPunOwnershipCallbacks.OnOwnershipTransfered(PhotonView targetView, Player previousOwner)
-    {
-        if (previousOwner != null && targetView != null)
-            Debug.Log("Transfer obj [" + targetView.name + "] from [" + (previousOwner.IsLocal ? "local" : "remote") + "] to [" + (targetView.Owner.IsLocal ? "local" : "remote") + "]");
-    }
 }

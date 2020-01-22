@@ -11,7 +11,7 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
 
     void Start()
     {
-        Exportable[] exportables = GameObject.FindObjectsOfType<Exportable>();
+        exportables = GameObject.FindObjectsOfType<Exportable>();
     }
 
     public override void OnEnable ()
@@ -43,7 +43,15 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
         foreach(Exportable exportable in exportables)
         {
             PhotonView exportablePhotonView =  exportable.GetComponent<PhotonView>();
-            exportablePhotonView.RequestOwnership();
+            if(exportablePhotonView.Owner != null && exportablePhotonView.Owner.IsLocal)
+            {
+                machineOwned.Add(exportablePhotonView);
+            }
+            else
+            {
+                exportablePhotonView.RequestOwnership();
+            }
+            
         }
     }
 

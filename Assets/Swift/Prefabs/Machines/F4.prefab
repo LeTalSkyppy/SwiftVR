@@ -689,7 +689,7 @@ Transform:
   - {fileID: 5547678016195455358}
   - {fileID: 5547346497935303314}
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5541831334754793194
 GameObject:
@@ -881,7 +881,7 @@ Transform:
   - {fileID: 5540386916628873984}
   - {fileID: 5540134049158541010}
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5541852430703122258
 GameObject:
@@ -917,7 +917,7 @@ Transform:
   - {fileID: 5547470324641091510}
   - {fileID: 5547668885351562662}
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &5601858270274335910
 Animator:
@@ -1242,6 +1242,7 @@ Transform:
   m_LocalPosition: {x: -105.42, y: 0.51, z: 57.850002}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children:
+  - {fileID: 2874420167249945868}
   - {fileID: 5547496450636269796}
   - {fileID: 5547530099221736396}
   - {fileID: 5547407056059800174}
@@ -1302,6 +1303,8 @@ MonoBehaviour:
   timerText: {fileID: 5260997041418560902}
   timerImage: {fileID: 8954178830819291330}
   nomPiece: {fileID: 4353764576437970481}
+  lightMaterial: {fileID: 2100000, guid: ec34c0f36f6b7c24791dfffd519cb871, type: 2}
+  defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1699193334126016345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2680,7 +2683,7 @@ RectTransform:
   - {fileID: 5760730446375871008}
   - {fileID: 5760595698460898532}
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2779,7 +2782,7 @@ Transform:
   m_Children:
   - {fileID: 5760461357830703430}
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5519851640975067036
 MeshFilter:
@@ -3092,7 +3095,7 @@ Transform:
   m_LocalScale: {x: 4.75, y: 2.750007, z: 1}
   m_Children: []
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &5519669948103771286
 MeshFilter:
@@ -3482,7 +3485,7 @@ Transform:
   - {fileID: 5540002836744310244}
   - {fileID: 5547383738267077260}
   m_Father: {fileID: 5540262033722237032}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!95 &5602003020404224280
 Animator:
@@ -3836,6 +3839,86 @@ Transform:
   m_Father: {fileID: 5547526755464269810}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4510297754868465564
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5540262033722237032}
+    m_Modifications:
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918550515022666157, guid: 8fe86a2cfd799a844955076bd95258da,
+        type: 3}
+      propertyPath: m_Name
+      value: Lightbulb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fe86a2cfd799a844955076bd95258da, type: 3}
+--- !u!4 &2874420167249945868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1834150326069615248, guid: 8fe86a2cfd799a844955076bd95258da,
+    type: 3}
+  m_PrefabInstance: {fileID: 4510297754868465564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5542892585407224668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3886,7 +3969,7 @@ PrefabInstance:
     - target: {fileID: 6702570237487060767, guid: 498605c5415dcd748941265e3ce672e8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6702570237487060767, guid: 498605c5415dcd748941265e3ce672e8,
         type: 3}

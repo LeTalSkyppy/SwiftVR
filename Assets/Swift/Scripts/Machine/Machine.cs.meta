@@ -3,7 +3,14 @@ guid: 8bdfe411f162228478e1c3ade8402949
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - timerText: {instanceID: 0}
+  - timerImage: {instanceID: 0}
+  - nomPiece: {instanceID: 0}
+  - lightMachine: {instanceID: 0}
+  - lightMaterial: {fileID: 2100000, guid: ec34c0f36f6b7c24791dfffd519cb871, type: 2}
+  - defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - bulb: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

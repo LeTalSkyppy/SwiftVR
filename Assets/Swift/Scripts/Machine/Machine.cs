@@ -21,6 +21,45 @@ public abstract class Machine : MonoBehaviour
     //Key = produit par la machine ; Value = produit nécessaire pour le produit de la machine, "none" dans le cas ou aucun produit n'est nécessaire.
     public Dictionary<string,string> productsMachine = new Dictionary<string, string>();
 
+    protected Light lightMachine;
+    public Material lightMaterial;
+    public Material defaultMaterial;
+
+    protected GameObject bulb;
+
+    protected MeshRenderer bulbMesh;
+    
+
+    protected virtual void Start()
+    {
+        bulb = transform.Find("Lightbulb").Find("Bulb").gameObject;
+        lightMachine = bulb.GetComponent<Light>();
+        bulbMesh = bulb.GetComponent<MeshRenderer>();
+    }
+
+
+    protected virtual void Update()
+    {
+        if(isPowered)
+        {
+            AddQueueProduct();
+            BusyOrNotBusy();
+            if(!lightMachine.enabled)
+            {
+                lightMachine.enabled = true;
+                bulbMesh.material = lightMaterial;
+            }
+            
+        }
+        else
+        {
+            if(lightMachine.enabled)
+            {
+                lightMachine.enabled = false;
+                bulbMesh.material = defaultMaterial;
+            }
+        }
+    }
     public void AddQueueProduct()
     {
         foreach(KeyValuePair<string,string> product in productsMachine)

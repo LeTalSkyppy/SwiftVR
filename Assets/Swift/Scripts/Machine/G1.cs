@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class G1 : Machine
 {
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         busy = false;
         timeToProduct = 20f / 3f;
         productTime = timeToProduct;
@@ -16,12 +17,8 @@ public class G1 : Machine
 
         AddProducts();
     }
-    void Update()
+    protected override void Update()
     {
-        if(isPowered)
-        {
-            AddQueueProduct();
-            BusyOrNotBusy();
-        }
+        base.Update();
     }
 }

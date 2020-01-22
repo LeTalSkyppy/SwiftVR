@@ -5,8 +5,9 @@ using UnityEngine;
 public class F4 : Machine
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         busy = false;
         timeToProduct = 20f / 3f;
         productTime = timeToProduct;
@@ -19,12 +20,8 @@ public class F4 : Machine
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if(isPowered)
-        {
-            AddQueueProduct();
-            BusyOrNotBusy();
-        }
+        base.Update();
     }
 }

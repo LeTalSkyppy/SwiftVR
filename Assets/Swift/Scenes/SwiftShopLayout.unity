@@ -1192,6 +1192,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 846570491077702438, guid: 198e26b428ee8374d98e52b244765cd5,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 846570491077702438, guid: 198e26b428ee8374d98e52b244765cd5,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 926441842211117443, guid: 198e26b428ee8374d98e52b244765cd5,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 926441842211117443, guid: 198e26b428ee8374d98e52b244765cd5,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 42
+      objectReference: {fileID: 0}
     - target: {fileID: 2320969129539400906, guid: 198e26b428ee8374d98e52b244765cd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8393,6 +8413,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: viewIdField
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 2201497856735031000, guid: e31cf39f32b675b408dcc33d072e94a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8452,10 +8476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ImportExport
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: viewIdField
-      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31cf39f32b675b408dcc33d072e94a1, type: 3}

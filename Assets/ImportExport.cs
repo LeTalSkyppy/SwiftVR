@@ -65,10 +65,11 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
         if(targetView.Owner.IsLocal)
         {
             machineOwned.Add(targetView);
-        }
-        if(machineOwned.Count == exportables.Length)
-        {
-            Configuration.Import();
+            
+            if(machineOwned.Count == exportables.Length)
+            {
+                Configuration.Import();
+            }
         }
     }
 }

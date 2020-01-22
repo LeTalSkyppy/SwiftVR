@@ -3,7 +3,6 @@ using System.Xml.Serialization;
 using System.Xml;
 using System;
 using System.IO;
-
 /**
  * Helper class with methods to serialize and deserialize json and xml files
  */
@@ -133,13 +132,37 @@ public static class Configuration
 
     static public void Import ()
     {
-        Config config = DeserializeFromFile("./this_is_the_config.json");
+        string lastFilePath = "";
+        DateTime dateTimeFile = new DateTime();
 
-        foreach (Config.Element element in config.elements)
+        foreach(string file in System.IO.Directory.GetFiles("Assets/StreamingAssets/SavedLayout/"))
         {
-            GameObject obj = GameObject.Find(element.name);
-            obj.transform.position = element.position;
-            obj.transform.rotation = element.rotation;
+            if(Path.GetExtension(file) == ".json")
+            {
+                var fileInfo = new FileInfo(file);
+                if(DateTime.Compare(fileInfo.CreationTime,dateTimeFile) > 0)
+                {
+                    lastFilePath = file;
+                    dateTimeFile = fileInfo.CreationTime;
+                }
+
+            }
         }
+        try
+        {
+            Config config = DeserializeFromFile(lastFilePath);
+
+            foreach (Config.Element element in config.elements)
+            {
+                GameObject obj = GameObject.Find(element.name);
+                obj.transform.position = element.position;
+                obj.transform.rotation = element.rotation;
+            } 
+        }
+        catch
+        {
+
+        }
+        
     }
 }

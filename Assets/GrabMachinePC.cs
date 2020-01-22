@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
+using Photon.Pun;
 
-public class GrabMachinePC : MonoBehaviour
+public class GrabMachinePC : MonoBehaviourPunCallbacks
 {
     private bool isGrabbing = false;
     private bool rotateH = false;
@@ -18,15 +19,22 @@ public class GrabMachinePC : MonoBehaviour
     private GameObject TPCamera;
 
     public int layerMaskMachine;
-    void Start()
-    {
-        layerMaskMachine = LayerMask.GetMask("MovableArea");
-        TPCamera = gameObject.GetComponent<PlayerController>().orbitCam.gameObject;
-        controllerPointer = TPCamera.AddComponent<ControllerPointer>();
+
+    private void Start()
+    {   
+        if (photonView.IsMine)
+        {
+            layerMaskMachine = LayerMask.GetMask("MovableArea");
+            TPCamera = gameObject.GetComponent<PlayerController>().orbitCam.gameObject;
+            controllerPointer = TPCamera.AddComponent<ControllerPointer>();
+        }
     }
 
-    void Update()
+    private void Update()
     {
+        if (!photonView.IsMine)
+            return;
+
         if(Input.GetMouseButtonDown(0))
         {
             GrabPressed();
@@ -36,6 +44,7 @@ public class GrabMachinePC : MonoBehaviour
         {
             GrabReleased();
         }
+
         if(rotateH)
         {
             if(grabObject != null)
@@ -80,12 +89,23 @@ public class GrabMachinePC : MonoBehaviour
     {
         if(controllerPointer.CanGrab)
         {
-            grabObject = controllerPointer.grabObject;
+            PhotonView objView = controllerPointer.grabObject.GetComponent<PhotonView>();
+
+            if (objView.Owner == PhotonNetwork.LocalPlayer)
+            {
+                Debug.Log("Already Owner");
+                grabObject = controllerPointer.grabObject;
+            }
+            else
+            {
+                Debug.Log("Request Owner");
+                objView.RequestOwnership();
+            }
+
             controllerPointer.DesactivatePointer();
             Destroy(controllerPointer);
 
             displayArc = true;
-           
         }
     }
 

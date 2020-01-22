@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
+using Photon.Pun;
 
-public class GrabMachine : MonoBehaviour
+public class GrabMachine : MonoBehaviourPunCallbacks
 {
     SteamVR_Input_Sources inputSource;
     SteamVR_Behaviour_Pose pose;
@@ -112,7 +113,19 @@ public class GrabMachine : MonoBehaviour
     {
         if(controllerPointer.CanGrab)
         {
-            grabObject = controllerPointer.grabObject;
+            PhotonView objView = controllerPointer.grabObject.GetComponent<PhotonView>();
+
+            if (objView.Owner == PhotonNetwork.LocalPlayer)
+            {
+                Debug.Log("Already Owner");
+                grabObject = controllerPointer.grabObject;
+            }
+            else
+            {
+                Debug.Log("Request Owner");
+                objView.RequestOwnership();
+            }
+
             controllerPointer.DesactivatePointer();
             Destroy(controllerPointer);
 

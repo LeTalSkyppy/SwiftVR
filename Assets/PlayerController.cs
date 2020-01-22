@@ -8,21 +8,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public static PlayerController myPlayer;
 
     public GameObject orbitCameraPrefab;
-    protected OrbitCamera orbitCam;
+    public OrbitCamera orbitCam;
     public GameObject canvasUI;
 
     [Tooltip("running will double this speed")]
     public float speed = 1f;
+    [ReadOnly]
+    public float runMultiplier = 1f;
     public bool requestCursorLock = true;
 
     protected Rigidbody rb;
     protected Animator anim;
-    // list of previous directions to smooth the rotation
-    protected List<Vector3> directions = new List<Vector3>();
-    // time when start running to smooth in
-    protected float runStart;
-    // time when stop running to smooth out
-    protected float runStop;
+
+    protected List<float> cos = new List<float>();
+    protected List<float> sin = new List<float>();
+    
     // is cursor locked
     protected bool isCursorLocked = false;
 
@@ -62,56 +62,23 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+        
+        runMultiplier = Mathf.Lerp(runMultiplier, Input.GetKey(KeyCode.LeftShift) ? 3 : 1, Time.fixedDeltaTime * 5f);
 
-        Vector3 dir = x * Camera.main.transform.right + y * Camera.main.transform.forward;
+        Vector3 forwardXZ = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up);
+        Vector3 dirXZ = x * Camera.main.transform.right + y * forwardXZ * runMultiplier;
+        Vector3 lookDirXZ = forwardXZ;
 
-        Vector3 dirXZ = Vector3.ProjectOnPlane(dir, Vector3.up);
+        // set the rotation
+        if (dirXZ.magnitude > Mathf.Epsilon)
+            transform.LookAt(transform.position + lookDirXZ);
 
-        if (dirXZ.magnitude < Mathf.Epsilon)
-        {
-            anim?.SetFloat("speed", 0f);
-            return;
-        }
-
-        if (dirXZ.magnitude > 1f)
-        {
-            dirXZ.Normalize();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            runStart = Time.time;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            runStop = Time.time;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            dirXZ *= Mathf.Lerp(1, 2, (Time.time - runStart)*2);
-        }
-        else
-        {
-            dirXZ *= Mathf.Lerp(2, 1, (Time.time - runStop) * 2);
-        }
-
-        anim?.SetFloat("speed", dirXZ.magnitude);
+        anim.SetFloat("vertical", y * runMultiplier);
+        anim.SetFloat("horizontal", x);
 
         Vector3 velXZ = Vector3.ProjectOnPlane(rb.velocity, Vector3.up);
 
         rb.AddForce((dirXZ * speed - velXZ * 0.25f) * rb.mass, ForceMode.Impulse);
-
-        directions.Add(dirXZ);
-        // smooth the rotation
-        if (directions.Count > 5)
-        {
-            directions.RemoveAt(0);
-        }
-        // by using the average of the 5 previous values
-        Vector3 average = directions.Aggregate(new Vector3(0, 0, 0), (s, v) => s + v) / (float)directions.Count;
-        // set the rotation
-        transform.LookAt(transform.position + average);
     }
 
     private void LateUpdate()

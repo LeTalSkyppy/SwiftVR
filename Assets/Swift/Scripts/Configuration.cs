@@ -115,6 +115,7 @@ public static class Configuration
     static public void Export ()
     {
         Exportable[] exportables = GameObject.FindObjectsOfType<Exportable>();
+        DateTime localDate = DateTime.Now;
 
         Debug.Log(exportables.Length);
 
@@ -127,7 +128,7 @@ public static class Configuration
             config.elements[i++] = new Config.Element(exportable.name, exportable.transform.position, exportable.transform.rotation);
         }
 
-        SerializeToFile(config, "./this_is_the_config.json");
+        SerializeToFile(config, "Assets/StreamingAssets/SavedLayout/Swift" + localDate.ToString("dd_MM_yyyy-HH_mm_ss") +".json");
     }
 
     static public void Import ()

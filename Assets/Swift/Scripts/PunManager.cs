@@ -79,7 +79,6 @@ public class PunManager : MonoBehaviourPunCallbacks
         blackScreen.color = new Color(0, 0, 0, 0);
     }
 
-    [Obsolete("Wait in Lobby 'til we know if a HMD is connected")]
     public void JoinRoom ()
     {
         RoomOptions opt = new RoomOptions();

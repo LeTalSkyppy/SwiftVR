@@ -94,18 +94,14 @@ public class GrabMachinePC : MonoBehaviourPunCallbacks
             if (objView.Owner == PhotonNetwork.LocalPlayer)
             {
                 Debug.Log("Already Owner");
-                grabObject = controllerPointer.grabObject;
             }
             else
             {
                 Debug.Log("Request Owner");
                 objView.RequestOwnership();
             }
-
-            controllerPointer.DesactivatePointer();
-            Destroy(controllerPointer);
-
-            displayArc = true;
+            
+            grabObject = controllerPointer.grabObject;
         }
     }
 
@@ -115,16 +111,10 @@ public class GrabMachinePC : MonoBehaviourPunCallbacks
         {
             Destroy(controllerPointer.outline);
         }
-        if(controllerPointer == null)
-        {
-            controllerPointer = TPCamera.AddComponent<ControllerPointer>();
-        }
 
         if(grabObject != null)
         {
-            displayArc = false;
             grabObject = null;
-            teleportArc.Hide();
         }
 
     }

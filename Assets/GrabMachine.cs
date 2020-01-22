@@ -27,6 +27,7 @@ public class GrabMachine : MonoBehaviourPunCallbacks
     public LayerMask layerMask;
 
     public int layerMaskMachine;
+
     void Start()
     {
         layerMaskMachine = LayerMask.GetMask("MovableArea");
@@ -118,20 +119,13 @@ public class GrabMachine : MonoBehaviourPunCallbacks
             if (objView.Owner == PhotonNetwork.LocalPlayer)
             {
                 Debug.Log("Already Owner");
-                grabObject = controllerPointer.grabObject;
             }
             else
             {
                 Debug.Log("Request Owner");
                 objView.RequestOwnership();
             }
-
-            controllerPointer.DesactivatePointer();
-            Destroy(controllerPointer);
-
-            displayArc = true;
-
-           
+            grabObject = controllerPointer.grabObject;
         }
     }
 
@@ -141,14 +135,9 @@ public class GrabMachine : MonoBehaviourPunCallbacks
         {
             Destroy(controllerPointer.outline);
         }
-        if(controllerPointer == null)
-        {
-            controllerPointer = gameObject.AddComponent<ControllerPointer>();
-        }
 
         if(grabObject != null)
         {
-            displayArc = false;
             grabObject = null;
             teleportArc.Hide();
         }

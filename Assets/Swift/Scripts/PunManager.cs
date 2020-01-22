@@ -59,6 +59,8 @@ public class PunManager : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log("Disconnected : " + cause.ToString());
+
+        PhotonNetwork.ConnectToMaster(ipAddress, 5055, "appId");
     }
 
     public override void OnJoinedLobby()
@@ -198,6 +200,7 @@ public class PunManager : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
 
     void IPunOwnershipCallbacks.OnOwnershipTransfered(PhotonView targetView, Player previousOwner)
     {
-        Debug.Log("Transfer obj [" + targetView.name + "] from [" + (previousOwner.IsLocal ? "local" : "remote") + "] to [" + (targetView.Owner.IsLocal ? "local" : "remote") + "]");
+        if (previousOwner != null && targetView != null)
+            Debug.Log("Transfer obj [" + targetView.name + "] from [" + (previousOwner.IsLocal ? "local" : "remote") + "] to [" + (targetView.Owner.IsLocal ? "local" : "remote") + "]");
     }
 }

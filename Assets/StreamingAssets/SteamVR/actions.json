@@ -70,6 +70,18 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/InterfaceOpening",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/SelectOption",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/ValidateAction",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -190,7 +202,10 @@
       "/actions/default/in/PushMachine": "Push Machine",
       "/actions/default/in/PullMachine": "Pull Machine",
       "/actions/default/in/RotateAntiHoraire": "Rotate anti horaire",
-      "/actions/default/in/RotateHoraire": "Rotate horaire"
+      "/actions/default/in/RotateHoraire": "Rotate horaire",
+      "/actions/default/in/InterfaceOpening": "Interface Opening",
+      "/actions/default/in/SelectOption": "Select Option",
+      "/actions/default/in/ValidateAction": "ValidateAction"
     }
   ]
 }

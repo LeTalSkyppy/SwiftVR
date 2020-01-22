@@ -16,4 +16,9 @@ public class Importation : MonoBehaviour
             Configuration.Import();
         }        
     }
+
+    public void Import()
+    {
+        Configuration.Import();
+    }
 }

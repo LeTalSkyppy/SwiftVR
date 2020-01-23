@@ -153,19 +153,27 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean SelectOption
-        {
-            get
-            {
-                return SteamVR_Actions.default_SelectOption;
-            }
-        }
-        
         public virtual SteamVR_Action_Boolean ValidateAction
         {
             get
             {
                 return SteamVR_Actions.default_ValidateAction;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean SelectOptionTop
+        {
+            get
+            {
+                return SteamVR_Actions.default_SelectOptionTop;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean SelectOptionBot
+        {
+            get
+            {
+                return SteamVR_Actions.default_SelectOptionBot;
             }
         }
         

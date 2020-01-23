@@ -74,11 +74,15 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/SelectOption",
+      "name": "/actions/default/in/ValidateAction",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/ValidateAction",
+      "name": "/actions/default/in/SelectOptionTop",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/SelectOptionBot",
       "type": "boolean"
     },
     {
@@ -204,8 +208,9 @@
       "/actions/default/in/RotateAntiHoraire": "Rotate anti horaire",
       "/actions/default/in/RotateHoraire": "Rotate horaire",
       "/actions/default/in/InterfaceOpening": "Interface Opening",
-      "/actions/default/in/SelectOption": "Select Option",
-      "/actions/default/in/ValidateAction": "ValidateAction"
+      "/actions/default/in/ValidateAction": "Validate Action",
+      "/actions/default/in/SelectOptionBot": "Bot Select",
+      "/actions/default/in/SelectOptionTop": "Select Top"
     }
   ]
 }

@@ -51,9 +51,11 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_default_InterfaceOpening;
         
-        private static SteamVR_Action_Boolean p_default_SelectOption;
-        
         private static SteamVR_Action_Boolean p_default_ValidateAction;
+        
+        private static SteamVR_Action_Boolean p_default_SelectOptionTop;
+        
+        private static SteamVR_Action_Boolean p_default_SelectOptionBot;
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
@@ -207,19 +209,27 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean default_SelectOption
-        {
-            get
-            {
-                return SteamVR_Actions.p_default_SelectOption.GetCopy<SteamVR_Action_Boolean>();
-            }
-        }
-        
         public static SteamVR_Action_Boolean default_ValidateAction
         {
             get
             {
                 return SteamVR_Actions.p_default_ValidateAction.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_SelectOptionTop
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_SelectOptionTop.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_SelectOptionBot
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_SelectOptionBot.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -307,8 +317,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_PullMachine,
                     SteamVR_Actions.default_PushMachine,
                     SteamVR_Actions.default_InterfaceOpening,
-                    SteamVR_Actions.default_SelectOption,
                     SteamVR_Actions.default_ValidateAction,
+                    SteamVR_Actions.default_SelectOptionTop,
+                    SteamVR_Actions.default_SelectOptionBot,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -335,8 +346,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_PullMachine,
                     SteamVR_Actions.default_PushMachine,
                     SteamVR_Actions.default_InterfaceOpening,
-                    SteamVR_Actions.default_SelectOption,
                     SteamVR_Actions.default_ValidateAction,
+                    SteamVR_Actions.default_SelectOptionTop,
+                    SteamVR_Actions.default_SelectOptionBot,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -365,8 +377,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_PullMachine,
                     SteamVR_Actions.default_PushMachine,
                     SteamVR_Actions.default_InterfaceOpening,
-                    SteamVR_Actions.default_SelectOption,
                     SteamVR_Actions.default_ValidateAction,
+                    SteamVR_Actions.default_SelectOptionTop,
+                    SteamVR_Actions.default_SelectOptionBot,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -395,8 +408,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_PullMachine,
                     SteamVR_Actions.default_PushMachine,
                     SteamVR_Actions.default_InterfaceOpening,
-                    SteamVR_Actions.default_SelectOption,
                     SteamVR_Actions.default_ValidateAction,
+                    SteamVR_Actions.default_SelectOptionTop,
+                    SteamVR_Actions.default_SelectOptionBot,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -424,8 +438,9 @@ namespace Valve.VR
             SteamVR_Actions.p_default_PullMachine = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PullMachine")));
             SteamVR_Actions.p_default_PushMachine = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PushMachine")));
             SteamVR_Actions.p_default_InterfaceOpening = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/InterfaceOpening")));
-            SteamVR_Actions.p_default_SelectOption = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SelectOption")));
             SteamVR_Actions.p_default_ValidateAction = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/ValidateAction")));
+            SteamVR_Actions.p_default_SelectOptionTop = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SelectOptionTop")));
+            SteamVR_Actions.p_default_SelectOptionBot = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SelectOptionBot")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));

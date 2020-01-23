@@ -129,7 +129,7 @@ public abstract class Machine : MonoBehaviour
                 
                 int indexNextProduct = productClass.IndexOf(queueProduct[0]) + 1;
 
-                if(indexNextProduct < productClass.Count)
+                if(indexNextProduct < productClass.Count && PhotonNetwork.IsMasterClient)
                 {
                     GameObject target = GameObject.Find(productClass[indexNextProduct].Substring(0,2));
                     GameObject productInstance = PhotonNetwork.Instantiate("Product", transform.position, Quaternion.identity);

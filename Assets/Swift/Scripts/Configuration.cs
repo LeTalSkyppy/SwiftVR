@@ -116,8 +116,6 @@ public static class Configuration
         Exportable[] exportables = GameObject.FindObjectsOfType<Exportable>();
         DateTime localDate = DateTime.Now;
 
-        Debug.Log(exportables.Length);
-
         Config config = new Config();
         config.elements = new Config.Element[exportables.Length];
 
@@ -134,20 +132,6 @@ public static class Configuration
     {
         string lastFilePath = "";
         DateTime dateTimeFile = new DateTime();
-
-        /*foreach(string file in System.IO.Directory.GetFiles( Application.streamingAssetsPath + "/SavedLayout/"))
-        {
-            if(Path.GetExtension(file) == ".json")
-            {
-                var fileInfo = new FileInfo(file);
-                if(DateTime.Compare(fileInfo.CreationTime,dateTimeFile) > 0)
-                {
-                    lastFilePath = file;
-                    dateTimeFile = fileInfo.CreationTime;
-                }
-
-            }
-        }*/
 
         foreach(string file in BetterStreamingAssets.GetFiles("SavedLayout", "*.json"))
         {

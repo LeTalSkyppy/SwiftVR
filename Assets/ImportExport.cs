@@ -76,9 +76,5 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
                 Configuration.Import();
             }
         }
-        else
-        {
-            Debug.Log("Authority asked by the smartphone");
-        }
     }
 }

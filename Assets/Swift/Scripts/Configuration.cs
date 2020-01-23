@@ -127,7 +127,7 @@ public static class Configuration
             config.elements[i++] = new Config.Element(exportable.name, exportable.transform.position, exportable.transform.rotation);
         }
 
-        SerializeToFile(config, "Assets/StreamingAssets/SavedLayout/Swift" + localDate.ToString("dd_MM_yyyy-HH_mm_ss") +".json");
+        SerializeToFile(config, Application.streamingAssetsPath + "/SavedLayout/Swift" + localDate.ToString("dd_MM_yyyy-HH_mm_ss") +".json");
     }
 
     static public void Import ()
@@ -135,7 +135,7 @@ public static class Configuration
         string lastFilePath = "";
         DateTime dateTimeFile = new DateTime();
 
-        foreach(string file in System.IO.Directory.GetFiles("Assets/StreamingAssets/SavedLayout/"))
+        /*foreach(string file in System.IO.Directory.GetFiles( Application.streamingAssetsPath + "/SavedLayout/"))
         {
             if(Path.GetExtension(file) == ".json")
             {
@@ -147,6 +147,10 @@ public static class Configuration
                 }
 
             }
+        }*/
+        foreach(string file in BetterStreamingAssets.GetFiles(Application.streamingAssetsPath + "SavedLayout", "*.json"))
+        {
+            Debug.Log(file);
         }
         try
         {

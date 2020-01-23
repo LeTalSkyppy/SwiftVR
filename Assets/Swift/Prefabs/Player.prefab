@@ -2024,7 +2024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  startColor: {r: 0.3372549, g: 0.8039216, b: 0.25882354, a: 0.6862745}
+  startColor: {r: 0.20358667, g: 0.7075472, b: 0.22097793, a: 0.90588236}
   endColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0.6862745}
   menu: {fileID: 7686523359137612175}
   childArray:

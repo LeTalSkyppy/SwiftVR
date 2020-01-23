@@ -4,6 +4,7 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 using UnityEngine.UI;
+using System;
 
 public class OpeningInterface : MonoBehaviour
 {
@@ -50,6 +51,23 @@ public class OpeningInterface : MonoBehaviour
         if(SteamVR_Actions._default.ValidateAction.GetStateDown(inputSource))
         {
             Debug.Log("VALIDATE");
+            if(numChild == 2)
+            {   
+                menu.SetActive(false);
+                DateTime localDate = DateTime.Now;
+                ScreenCapture.CaptureScreenshot("Assets/StreamingAssets/Screenshot/Screen" + localDate.ToString("dd_MM_yyyy-HH_mm_ss") + ".jpeg");
+            }
+
+            if(numChild == 1)
+            {
+                Configuration.Import();
+
+            }
+
+            if(numChild == 0)
+            {
+                Configuration.Export();
+            }
         }
 
         if(SteamVR_Actions._default.SelectOptionBot.GetStateDown(inputSource))

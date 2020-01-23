@@ -13,6 +13,11 @@ public class OpeningInterface : MonoBehaviour
     SteamVR_Behaviour_Pose pose;
     private bool isOpen = false;
     private int numChild = -1;
+
+    public float speed = 1.0f;
+    public Color startColor;
+    public Color endColor;
+    float startTime;
     
 
 
@@ -23,7 +28,7 @@ public class OpeningInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -60,14 +65,28 @@ public class OpeningInterface : MonoBehaviour
 
             if(numChild == 1)
             {
+                startTime = Time.time;
                 Configuration.Import();
 
             }
 
             if(numChild == 0)
             {
+                startTime = Time.time;
                 Configuration.Export();
             }
+        }
+
+        if (numChild == 1)
+        {
+            float t = (Time.time - startTime) * speed;
+            childArray[1].GetComponent<Image>().color = Color.Lerp(startColor, endColor, t);
+        }
+
+        if (numChild == 0)
+        {
+            float t = (Time.time - startTime) * speed;
+            childArray[0].GetComponent<Image>().color = Color.Lerp(startColor, endColor, t);
         }
 
         if(SteamVR_Actions._default.SelectOptionBot.GetStateDown(inputSource))

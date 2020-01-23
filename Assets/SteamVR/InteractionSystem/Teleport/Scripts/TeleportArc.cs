@@ -54,7 +54,8 @@ namespace Valve.VR.InteractionSystem
         void Update()
         {
             //scale arc to match player scale
-            scale = Player.instance.transform.lossyScale.x;
+            //scale = Player.instance.transform.lossyScale.x;
+            //
             if (thickness != prevThickness || segmentCount != prevSegmentCount)
             {
                 CreateLineRendererObjects();
@@ -108,7 +109,6 @@ namespace Valve.VR.InteractionSystem
         {
             startPos = position;
             projectileVelocity = velocity;
-            Debug.Log(projectileVelocity.ToString());
             useGravity = gravity;
 
             if (arcInvalid && !pointerAtBadAngle)

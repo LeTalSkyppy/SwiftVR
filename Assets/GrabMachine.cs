@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
+using Photon.Pun;
 
-public class GrabMachine : MonoBehaviour
+public class GrabMachine : MonoBehaviourPunCallbacks
 {
     SteamVR_Input_Sources inputSource;
     SteamVR_Behaviour_Pose pose;
@@ -26,6 +27,7 @@ public class GrabMachine : MonoBehaviour
     public LayerMask layerMask;
 
     public int layerMaskMachine;
+
     void Start()
     {
         layerMaskMachine = LayerMask.GetMask("MovableArea");
@@ -87,7 +89,7 @@ public class GrabMachine : MonoBehaviour
         {
             Ray raycast = new Ray(transform.position, transform.forward);
             RaycastHit hitObject;
-            if(Physics.Raycast(raycast, out hitObject, 30f, layerMaskMachine))
+            if(Physics.Raycast(raycast, out hitObject, 100f, layerMaskMachine))
             {
                 Vector3 position = new Vector3(hitObject.point.x, grabObject.transform.position.y, hitObject.point.z);
                 grabObject.transform.position = position;
@@ -112,13 +114,18 @@ public class GrabMachine : MonoBehaviour
     {
         if(controllerPointer.CanGrab)
         {
+            PhotonView objView = controllerPointer.grabObject.GetComponent<PhotonView>();
+
+            if (objView.Owner == PhotonNetwork.LocalPlayer)
+            {
+                Debug.Log("Already Owner");
+            }
+            else
+            {
+                Debug.Log("Request Owner");
+                objView.RequestOwnership();
+            }
             grabObject = controllerPointer.grabObject;
-            controllerPointer.DesactivatePointer();
-            Destroy(controllerPointer);
-
-            displayArc = true;
-
-           
         }
     }
 
@@ -128,14 +135,9 @@ public class GrabMachine : MonoBehaviour
         {
             Destroy(controllerPointer.outline);
         }
-        if(controllerPointer == null)
-        {
-            controllerPointer = gameObject.AddComponent<ControllerPointer>();
-        }
 
         if(grabObject != null)
         {
-            displayArc = false;
             grabObject = null;
             teleportArc.Hide();
         }

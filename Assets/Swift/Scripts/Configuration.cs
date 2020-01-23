@@ -3,7 +3,6 @@ using System.Xml.Serialization;
 using System.Xml;
 using System;
 using System.IO;
-
 /**
  * Helper class with methods to serialize and deserialize json and xml files
  */
@@ -11,11 +10,11 @@ public static class Configuration
 {
     static public Config DeserializeFromFile (string configPath)
     {
-        if (File.Exists(configPath))
+        if (BetterStreamingAssets.FileExists(configPath)) //File.Exists(configPath))
         {
             if (Path.GetExtension(configPath) == ".json")
             {
-                string json = File.ReadAllText(configPath);
+                string json = BetterStreamingAssets.ReadAllText(configPath);
                 return Deserialize(json, "json");
             }
             else if (Path.GetExtension(configPath) == ".xml")
@@ -117,8 +116,6 @@ public static class Configuration
         Exportable[] exportables = GameObject.FindObjectsOfType<Exportable>();
         DateTime localDate = DateTime.Now;
 
-        Debug.Log(exportables.Length);
-
         Config config = new Config();
         config.elements = new Config.Element[exportables.Length];
 
@@ -128,18 +125,38 @@ public static class Configuration
             config.elements[i++] = new Config.Element(exportable.name, exportable.transform.position, exportable.transform.rotation);
         }
 
-        SerializeToFile(config, "Assets/StreamingAssets/SavedLayout/Swift" + localDate.ToString("dd_MM_yyyy-HH_mm_ss") +".json");
+        SerializeToFile(config, Application.streamingAssetsPath + "/SavedLayout/Swift" + localDate.ToString("dd_MM_yyyy-HH_mm_ss") +".json");
     }
 
     static public void Import ()
     {
-        Config config = DeserializeFromFile("./this_is_the_config.json");
+        string lastFilePath = "";
+        DateTime dateTimeFile = new DateTime();
 
-        foreach (Config.Element element in config.elements)
+        foreach(string file in BetterStreamingAssets.GetFiles("SavedLayout", "*.json"))
         {
-            GameObject obj = GameObject.Find(element.name);
-            obj.transform.position = element.position;
-            obj.transform.rotation = element.rotation;
+            var fileInfo = new FileInfo(file);
+            if(DateTime.Compare(fileInfo.CreationTime, dateTimeFile) > 0)
+            {
+                lastFilePath = file;
+                dateTimeFile = fileInfo.CreationTime;
+            }
         }
+        try
+        {
+            Config config = DeserializeFromFile(lastFilePath);
+
+            foreach (Config.Element element in config.elements)
+            {
+                GameObject obj = GameObject.Find(element.name);
+                obj.transform.position = element.position;
+                obj.transform.rotation = element.rotation;
+            } 
+        }
+        catch
+        {
+
+        }
+        
     }
 }

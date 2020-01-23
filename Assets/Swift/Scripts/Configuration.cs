@@ -10,11 +10,11 @@ public static class Configuration
 {
     static public Config DeserializeFromFile (string configPath)
     {
-        if (File.Exists(configPath))
+        if (BetterStreamingAssets.FileExists(configPath)) //File.Exists(configPath))
         {
             if (Path.GetExtension(configPath) == ".json")
             {
-                string json = File.ReadAllText(configPath);
+                string json = BetterStreamingAssets.ReadAllText(configPath);
                 return Deserialize(json, "json");
             }
             else if (Path.GetExtension(configPath) == ".xml")
@@ -148,9 +148,15 @@ public static class Configuration
 
             }
         }*/
-        foreach(string file in BetterStreamingAssets.GetFiles(Application.streamingAssetsPath + "SavedLayout", "*.json"))
+
+        foreach(string file in BetterStreamingAssets.GetFiles("SavedLayout", "*.json"))
         {
-            Debug.Log(file);
+            var fileInfo = new FileInfo(file);
+            if(DateTime.Compare(fileInfo.CreationTime, dateTimeFile) > 0)
+            {
+                lastFilePath = file;
+                dateTimeFile = fileInfo.CreationTime;
+            }
         }
         try
         {

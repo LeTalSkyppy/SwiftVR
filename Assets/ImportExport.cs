@@ -12,6 +12,7 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
     void Start()
     {
         exportables = GameObject.FindObjectsOfType<Exportable>();
+        BetterStreamingAssets.Initialize();
     }
 
     public override void OnEnable ()
@@ -53,6 +54,10 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
             }
             
         }
+        if(machineOwned.Count == exportables.Length)
+            {
+                Configuration.Import();
+            }
     }
 
     void IPunOwnershipCallbacks.OnOwnershipRequest(PhotonView targetView, Player requestingPlayer)

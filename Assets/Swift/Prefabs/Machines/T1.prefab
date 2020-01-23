@@ -3295,6 +3295,8 @@ MonoBehaviour:
   timerText: {fileID: 427454521733316829}
   timerImage: {fileID: 3508283513572988313}
   nomPiece: {fileID: 8108698833643193194}
+  lightMaterial: {fileID: 2100000, guid: ec34c0f36f6b7c24791dfffd519cb871, type: 2}
+  defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1801177224068897477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4341,6 +4343,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498605c5415dcd748941265e3ce672e8, type: 3}
+--- !u!4 &6702570238928709912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6702570237487060767, guid: 498605c5415dcd748941265e3ce672e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1526136327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3508283513572988313 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3508283514532817822, guid: 498605c5415dcd748941265e3ce672e8,
@@ -4371,12 +4379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &6702570238928709912 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6702570237487060767, guid: 498605c5415dcd748941265e3ce672e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1526136327}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5445308752604267562
 PrefabInstance:
   m_ObjectHideFlags: 0

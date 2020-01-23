@@ -19,11 +19,11 @@ public class Production : MonoBehaviour
     public int E = 0;
     public Text Etext;
 
-    public List<string> Alist = new List<string>() {"F1A","F2A","T1A","P1A","F3A","G1A"};
-    public List<string> Blist = new List<string>() {"G2B", "T3B" , "F2B" , "F4B", "P2B"};
-    public List<string> Clist = new List<string>() {"F3C", "T2C" , "G1C" , "F4C", "G2C"};
-    public List<string> Dlist = new List<string>() {"F1D", "T1D" , "F3D" , "F2D", "G2D"};
-    public List<string> Elist = new List<string>() {"F3E", "G1E" , "F4E" , "P3E"};
+    public static List<string> Alist = new List<string>() {"F1A","F2A","T1A","P1A","F3A","G1A"};
+    public static List<string> Blist = new List<string>() {"G2B", "T3B" , "F2B" , "F4B", "P2B"};
+    public static List<string> Clist = new List<string>() {"F3C", "T2C" , "G1C" , "F4C", "G2C"};
+    public static List<string> Dlist = new List<string>() {"F1D", "T1D" , "F3D" , "F2D", "G2D"};
+    public static List<string> Elist = new List<string>() {"F3E", "G1E" , "F4E" , "P3E"};
 
     public List<Text> TextProducts = new List<Text>();
     public List<Text> TextinProduction = new List<Text>();

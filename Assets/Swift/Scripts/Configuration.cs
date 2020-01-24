@@ -35,6 +35,33 @@ public static class Configuration
         }
     }
 
+    static public Config DeserializeFromFilePC(string configPath)
+    {
+        if (File.Exists(configPath)) //File.Exists(configPath))
+        {
+            if (Path.GetExtension(configPath) == ".json")
+            {
+                string json = File.ReadAllText(configPath);
+                return Deserialize(json, "json");
+            }
+            else if (Path.GetExtension(configPath) == ".xml")
+            {
+                string xml = File.ReadAllText(configPath);
+                return Deserialize(xml, "xml");
+            }
+            else
+            {
+                Debug.LogError("the configuration file format is not supported");
+                throw new FormatException();
+            }
+        }
+        else
+        {
+            Debug.LogError("configuration file not found");
+            throw new FileNotFoundException();
+        }
+    }
+
     static public Config Deserialize (string content, string format)
     {
         switch (format)
@@ -158,5 +185,40 @@ public static class Configuration
 
         }
         
+    }
+
+    static public void ImportFromPC()
+    {
+        string lastFilePath = "";
+        DateTime dateTimeFile = new DateTime();
+
+        foreach(string file in Directory.GetFiles(Application.streamingAssetsPath + "/SavedLayout/"))
+        {
+            if(Path.GetExtension(file) == ".json")
+            {
+                Debug.Log(file);
+                var fileInfo = new FileInfo(file);
+                if(DateTime.Compare(fileInfo.CreationTime, dateTimeFile) > 0)
+                {
+                    lastFilePath = file;
+                    dateTimeFile = fileInfo.CreationTime;
+                }
+            }
+        }
+        try
+        {
+            Config config = DeserializeFromFilePC(lastFilePath);
+
+            foreach (Config.Element element in config.elements)
+            {
+                GameObject obj = GameObject.Find(element.name);
+                obj.transform.position = element.position;
+                obj.transform.rotation = element.rotation;
+            } 
+        }
+        catch
+        {
+
+        }
     }
 }

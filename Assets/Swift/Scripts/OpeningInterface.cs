@@ -22,6 +22,7 @@ public class OpeningInterface : MonoBehaviour
 
 
     public GameObject menu;
+    public GameObject importExportGameObject;
 
     public GameObject[] childArray = new GameObject[3];
 
@@ -66,8 +67,7 @@ public class OpeningInterface : MonoBehaviour
             if(numChild == 1)
             {
                 startTime = Time.time;
-                Configuration.Import();
-
+                ImportExport.instance.GetAuthorityFromPC();
             }
 
             if(numChild == 0)

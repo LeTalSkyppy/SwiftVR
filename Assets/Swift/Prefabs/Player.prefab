@@ -2027,6 +2027,8 @@ MonoBehaviour:
   startColor: {r: 0.20358667, g: 0.7075472, b: 0.22097793, a: 0.90588236}
   endColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0.6862745}
   menu: {fileID: 7686523359137612175}
+  importExportGameObject: {fileID: 1363039614716151772, guid: 95a186788db713941ba56de38a0ffe9f,
+    type: 3}
   childArray:
   - {fileID: 8935016428138066099}
   - {fileID: 153991431007830824}
@@ -3240,6 +3242,7 @@ MonoBehaviour:
   startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0, g: 0, b: 0, a: 0}
   menu: {fileID: 7686523359137612175}
+  importExportGameObject: {fileID: 0}
   childArray:
   - {fileID: 0}
   - {fileID: 0}

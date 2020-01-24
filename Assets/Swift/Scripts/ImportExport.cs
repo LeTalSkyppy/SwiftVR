@@ -6,9 +6,18 @@ using Photon.Realtime;
 
 public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
 {
+    public static ImportExport instance;
+
     public List<PhotonView> machineOwned = new List<PhotonView>();
     public Exportable[] exportables;
 
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        instance = this; 
+    }
     void Start()
     {
         exportables = GameObject.FindObjectsOfType<Exportable>();
@@ -58,6 +67,28 @@ public class ImportExport : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
             {
                 Configuration.Import();
             }
+    }
+
+    public void GetAuthorityFromPC()
+    {
+        machineOwned.Clear();
+        foreach(Exportable exportable in exportables)
+        {
+            PhotonView exportablePhotonView =  exportable.GetComponent<PhotonView>();
+            if(exportablePhotonView.Owner != null && exportablePhotonView.Owner.IsLocal)
+            {
+                machineOwned.Add(exportablePhotonView);
+            }
+            else
+            {
+                exportablePhotonView.RequestOwnership();
+            }
+            
+        }
+        if(machineOwned.Count == exportables.Length)
+        {
+            Configuration.ImportFromPC();
+        }
     }
 
     void IPunOwnershipCallbacks.OnOwnershipRequest(PhotonView targetView, Player requestingPlayer)

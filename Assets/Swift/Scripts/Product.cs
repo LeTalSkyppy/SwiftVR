@@ -68,7 +68,7 @@ public class Product : MonoBehaviourPunCallbacks, IPunObservable
         {
             if(stream.IsWriting)
             {
-                stream.SendNext(target);
+                stream.SendNext(targetId);
                 stream.SendNext(type);
             }
             else

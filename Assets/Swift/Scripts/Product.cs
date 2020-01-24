@@ -7,7 +7,7 @@ using Photon.Pun;
 public class Product : MonoBehaviourPunCallbacks, IPunObservable
 {
     public PhotonView target;
-
+    public int targetId;
     public string type;
     public List<Text> textList = new List<Text>();
     Vector3 diff = Vector3.zero;
@@ -70,8 +70,9 @@ public class Product : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-           target = (PhotonView) stream.ReceiveNext();
+           targetId = (int) stream.ReceiveNext();
            type = (string) stream.ReceiveNext();
+           target = PhotonNetwork.GetPhotonView(targetId);
            SetTypeProduct(type);
         }
     }

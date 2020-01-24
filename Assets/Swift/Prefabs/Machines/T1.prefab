@@ -3297,6 +3297,8 @@ MonoBehaviour:
   nomPiece: {fileID: 8108698833643193194}
   lightMaterial: {fileID: 2100000, guid: ec34c0f36f6b7c24791dfffd519cb871, type: 2}
   defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  productGameObject: {fileID: 153082938717361828, guid: 94d2620a20c34974685662c95829bb9a,
+    type: 3}
 --- !u!114 &1801177224068897477
 MonoBehaviour:
   m_ObjectHideFlags: 0

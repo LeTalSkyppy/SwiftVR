@@ -134,8 +134,8 @@ public abstract class Machine : MonoBehaviour
                     GameObject target = GameObject.Find(productClass[indexNextProduct].Substring(0,2));
                     GameObject productInstance = PhotonNetwork.Instantiate("Product", transform.position, Quaternion.identity);
                     Product productScript = productInstance.GetComponent<Product>();
-                    productScript.target = target;
-                    productScript.SetTypeProduct(productType);
+                    productScript.target = target.GetComponent<PhotonView>();
+                    productScript.type = productType;
 
                 }
                 

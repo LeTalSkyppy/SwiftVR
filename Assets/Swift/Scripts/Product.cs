@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Product : MonoBehaviour
+public class Product : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public GameObject target;
+    public PhotonView target;
 
+    public string type;
     public List<Text> textList = new List<Text>();
     Vector3 diff = Vector3.zero;
     Vector3 targetPosition = Vector3.zero;
@@ -55,6 +57,22 @@ public class Product : MonoBehaviour
         foreach(Text text in textList)
         {
             text.text = type;
+        }
+    }
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        Debug.Log("observe : " + stream.IsWriting);
+        if(stream.IsWriting)
+        {
+            stream.SendNext(target);
+            stream.SendNext(type);
+            SetTypeProduct(type);
+        }
+        else
+        {
+           target = (PhotonView) stream.ReceiveNext();
+           type = (string) stream.ReceiveNext();
+           SetTypeProduct(type);
         }
     }
 }

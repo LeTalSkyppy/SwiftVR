@@ -61,9 +61,9 @@ public class Product : MonoBehaviourPunCallbacks, IPunObservable
             text.text = type;
         }
     }
+
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-
         if(!observabled)
         {
             if(stream.IsWriting)
@@ -73,10 +73,11 @@ public class Product : MonoBehaviourPunCallbacks, IPunObservable
             }
             else
             {
-            targetId = (int) stream.ReceiveNext();
-            type = (string) stream.ReceiveNext();
-            target = PhotonNetwork.GetPhotonView(targetId);
-            SetTypeProduct(type);
+                targetId = (int) stream.ReceiveNext();
+                type  = (string) stream.ReceiveNext();
+
+                target = PhotonNetwork.GetPhotonView(targetId);
+                SetTypeProduct(type);
             }
             observabled = true;
         }

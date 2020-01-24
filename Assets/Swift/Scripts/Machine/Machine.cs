@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public abstract class Machine : MonoBehaviour
 {
@@ -25,10 +26,11 @@ public abstract class Machine : MonoBehaviour
     public Material lightMaterial;
     public Material defaultMaterial;
 
+    public GameObject productGameObject;
+
     protected GameObject bulb;
 
     protected MeshRenderer bulbMesh;
-    
 
     protected virtual void Start()
     {
@@ -104,6 +106,41 @@ public abstract class Machine : MonoBehaviour
             if(productTime <= 0)
             {
                 busy = false;
+                List<string> productClass = new List<string>();
+                string productType = queueProduct[0].Substring(2);
+                switch(productType)
+                {
+                    case "A":
+                        productClass = Production.Alist;
+                    break;
+                    case "B":
+                        productClass = Production.Blist;
+                    break;                    
+                    case "C":
+                        productClass = Production.Clist;
+                    break;
+                    case "D":
+                        productClass = Production.Dlist;
+                    break;
+                    case "E":
+                        productClass = Production.Elist;
+                    break;                                        
+                }
+                
+                int indexNextProduct = productClass.IndexOf(queueProduct[0]) + 1;
+
+                if(indexNextProduct < productClass.Count && PhotonNetwork.IsMasterClient)
+                {
+                    GameObject target = GameObject.Find(productClass[indexNextProduct].Substring(0,2));
+                    GameObject productInstance = PhotonNetwork.Instantiate("Product", transform.position, Quaternion.identity);
+                    Product productScript = productInstance.GetComponent<Product>();
+                    PhotonView pv = target.GetComponent<PhotonView>();
+                    productScript.target = pv;
+                    productScript.targetId = pv.ViewID;
+                    productScript.type = productType;
+                    productScript.SetTypeProduct(productType);
+                }
+                
                 Production.inProduction[queueProduct[0]] = false;
                 Production.products[queueProduct[0]] = true;
                 nomPiece.text = "";

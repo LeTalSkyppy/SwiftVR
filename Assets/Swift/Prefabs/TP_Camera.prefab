@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2472273190542566234}
   - component: {fileID: 2472273190542566235}
   - component: {fileID: 2472273190542566232}
-  - component: {fileID: 1707919592621584334}
   - component: {fileID: 118479078019611537}
   m_Layer: 0
   m_Name: TP_Camera
@@ -111,23 +110,6 @@ MonoBehaviour:
   zoomRate: 40
   rotationDampening: 3
   zoomDampening: 5
---- !u!114 &1707919592621584334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2472273190542566233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 5de7b60a4e2b23c4fa6f543f4083744d, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!114 &118479078019611537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,10 +125,10 @@ MonoBehaviour:
   volumeTrigger: {fileID: 2472273190542566229}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2048
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -155,7 +137,7 @@ MonoBehaviour:
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
-    fastMode: 0
+    fastMode: 1
     keepAlpha: 0
   fog:
     enabled: 1

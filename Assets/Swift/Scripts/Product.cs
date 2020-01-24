@@ -20,6 +20,8 @@ public class Product : MonoBehaviourPunCallbacks, IPunObservable
     public float speed = 50f;
 
     public float speedoRotato = 500f;
+
+    private bool observabled = false;
     void Start()
     {
         initialPosition = transform.position;
@@ -61,19 +63,23 @@ public class Product : MonoBehaviourPunCallbacks, IPunObservable
     }
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        Debug.Log("observe : " + stream.IsWriting);
-        if(stream.IsWriting)
+
+        if(!observabled)
         {
-            stream.SendNext(target);
-            stream.SendNext(type);
+            if(stream.IsWriting)
+            {
+                stream.SendNext(target);
+                stream.SendNext(type);
+            }
+            else
+            {
+            targetId = (int) stream.ReceiveNext();
+            type = (string) stream.ReceiveNext();
+            target = PhotonNetwork.GetPhotonView(targetId);
             SetTypeProduct(type);
+            }
+            observabled = true;
         }
-        else
-        {
-           targetId = (int) stream.ReceiveNext();
-           type = (string) stream.ReceiveNext();
-           target = PhotonNetwork.GetPhotonView(targetId);
-           SetTypeProduct(type);
-        }
+       
     }
 }

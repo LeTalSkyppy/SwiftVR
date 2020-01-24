@@ -138,7 +138,7 @@ public abstract class Machine : MonoBehaviour
                     productScript.target = pv;
                     productScript.targetId = pv.ViewID;
                     productScript.type = productType;
-
+                    productScript.SetTypeProduct(productType);
                 }
                 
                 Production.inProduction[queueProduct[0]] = false;

@@ -35,16 +35,6 @@ public class PunManager : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
         PhotonNetwork.AuthValues.UserId = Guid.NewGuid().ToString();
     }
 
-    private void Start ()
-    {
-        string[] args = Environment.GetCommandLineArgs();
-        
-        if (args.Length >= 2)
-        {
-            ipAddress = args[1];
-        }
-    }
-    
     public override void OnEnable ()
     {
         base.OnEnable();

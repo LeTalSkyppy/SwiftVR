@@ -67,7 +67,7 @@ public class OpeningInterface : MonoBehaviour
             if(numChild == 1)
             {
                 startTime = Time.time;
-                ImportExport.instance.GetAuthorityFromPC();
+                //ImportExport.instance.GetAuthorityFromPC();
             }
 
             if(numChild == 0)
